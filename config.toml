@@ -1,0 +1,33 @@
+baseURL = "https://example.com/"
+relativeURLs = true
+canonifyURLs = true
+
+theme = "hugo-theme-learn"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  themeVariant = "workshop"
+  editURL = ""
+  description = "Hugo Workshop Template - Tái sử dụng cho workshop/docs"
+  author = ""
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+
+[Languages]
+[Languages.en]
+title = "Workshop Documentation"
+weight = 1
+languageName = "English"
+
+[Languages.vi]
+title = "Tài liệu Workshop"
+weight = 2
+languageName = "Tiếng Việt"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
