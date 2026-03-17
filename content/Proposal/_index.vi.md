@@ -27,7 +27,7 @@ pre: " <b> 1. </b> "
 
 Vấn đề hiện tại (Current Challenges): Tập dữ liệu Yellow Taxi từ New York City Taxi and Limousine Commission chứa lượng thông tin khổng lồ nhưng mang nhiều "nhiễu" và bất thường ở dạng thô:
 
-- Chất lượng dữ liệu kém: Xuất hiện các cuốc xe không có hành khách (passenger_count = null), khoảng cách bằng 0 (trip_distance = 0), hoặc cước phí bị âm (fare_amount < 0).
+- Chất lượng dữ liệu kém: Xuất hiện các cuốc xe không có hành khách (`passenger_count = null`), khoảng cách bằng 0 (`trip_distance = 0`), hoặc cước phí bị âm (`fare_amount < 0`).
 - Thiếu tự động hóa: Việc xử lý dữ liệu thủ công hoặc bằng các hệ thống cũ tốn nhiều thời gian, dễ gây sai sót và không có khả năng mở rộng (scale) khi dung lượng dữ liệu tăng lên hàng tháng (file Parquet/CSV mới).
 - Phân mảnh thông tin: Dữ liệu không được tập trung tại một nguồn duy nhất (Single Source of Truth), khiến việc lập báo cáo doanh thu và phân tích hành vi khách hàng gặp khó khăn, độ trễ cao.
 
@@ -35,7 +35,7 @@ Giải pháp kỹ thuật (Technical Solution): Triển khai kiến trúc Modern
 
 - Tự động kích hoạt (Event-driven): Sử dụng Amazon EventBridge để tự động bắt sự kiện khi có file dữ liệu mới được upload, loại bỏ thao tác thủ công.
 - Kiểm soát chất lượng chặt chẽ: Sử dụng AWS Glue DataBrew để Profiling (phân tích cấu trúc) và AWS Lambda để rẽ nhánh logic (Ví dụ: Tự động cảnh báo nếu tỷ lệ lỗi dữ liệu > 20%, ngược lại tiếp tục quy trình).
-- Chuẩn hóa và Tối ưu: Làm sạch dữ liệu, tạo thêm các biến có ý nghĩa (Feature Engineering như trip_duration, trip_speed) và lưu trữ dưới định dạng Columnar (Parquet) theo phân vùng (Partitioning) để tối ưu chi phí và tốc độ truy vấn.
+- Chuẩn hóa và Tối ưu: Làm sạch dữ liệu, tạo thêm các biến có ý nghĩa (Feature Engineering như `trip_duration`, `trip_speed`) và lưu trữ dưới định dạng Columnar (Parquet) theo phân vùng (Partitioning) để tối ưu chi phí và tốc độ truy vấn.
 
 **Kiến trúc giải pháp (Solution Architecture)**
 
@@ -47,13 +47,13 @@ Raw &rarr; Processing &rarr; Analytics &rarr; Visualization.
 Kiến trúc Kỹ thuật (Workflow Overview)
 
 - Ingestion: Dữ liệu thô (Parquet/CSV) được đẩy vào Data Lake S3 Raw Bucket.
-- Trigger: Sự kiện ObjectCreated từ S3 kích hoạt EventBridge.
+- Trigger: Sự kiện `ObjectCreated` từ S3 kích hoạt EventBridge.
 - Orchestration: EventBridge gọi Step Functions để điều phối toàn bộ vòng đời pipeline (Retry, Logging).
 - Profiling: Glue DataBrew phân tích dataset, tìm ra các điểm bất thường (missing, outliers, mismatch).
 - Validation: Lambda đọc kết quả Profiling để quyết định bước tiếp theo hoặc gửi cảnh báo lỗi.
 - Transformation: Glue DataBrew Recipe thực thi ETL (làm sạch dữ liệu, chuẩn hóa kiểu dữ liệu, Feature Engineering).
 - Processed Storage: Dữ liệu sạch được lưu vào S3 Processed Bucket (định dạng Parquet, phân vùng theo Year/Month/Day).
-- Data Warehousing: Sử dụng lệnh COPY để nạp dữ liệu từ S3 vào bảng fact_taxi_trip trong Amazon Redshift phục vụ OLAP. Song song, Amazon Athena hỗ trợ truy vấn Ad-hoc trực tiếp trên S3.
+- Data Warehousing: Sử dụng lệnh `COPY` để nạp dữ liệu từ S3 vào bảng `fact_taxi_trip` trong Amazon Redshift phục vụ OLAP. Song song, Amazon Athena hỗ trợ truy vấn Ad-hoc trực tiếp trên S3.
 - Visualization: Amazon QuickSight kết nối với Redshift/Athena để hiển thị Dashboard (Trip Demand, Revenue, Spatial Analysis).
 
 Technology Stack:
@@ -76,15 +76,15 @@ Lộ trình và Milestones (Dự kiến 8 tuần)
 - Phase 1: Foundation & Data Ingestion (Tuần 1-2)
   - Thiết lập môi trường AWS, cấu hình IAM Roles và Security.
   - Tạo S3 Buckets (Raw & Processed).
-  - Thiết lập EventBridge trigger S3 ObjectCreated.
+  - Thiết lập EventBridge trigger S3 `ObjectCreated`.
 - Phase 2: Orchestration & Data Processing (Tuần 3-5)
   - Tạo Glue DataBrew Profiles để phân tích cấu trúc schema của Taxi data.
-  - Viết DataBrew Recipes thực hiện ETL (Xóa null, lọc giá trị âm, tạo biến trip_duration, trip_speed).
+  - Viết DataBrew Recipes thực hiện ETL (Xóa null, lọc giá trị âm, tạo biến `trip_duration`, `trip_speed`).
   - Lập trình AWS Lambda function để đọc rules và rẽ nhánh.
   - Đóng gói quy trình vào AWS Step Functions.
 - Phase 3: Data Warehousing & Querying (Tuần 6)
-  - Thiết lập Amazon Redshift Cluster, tạo schema fact_taxi_trip.
-  - Tạo luồng tự động COPY dữ liệu từ S3 Processed vào Redshift.
+  - Thiết lập Amazon Redshift Cluster, tạo schema `fact_taxi_trip`.
+  - Tạo luồng tự động `COPY` dữ liệu từ S3 Processed vào Redshift.
   - Cấu hình Amazon Athena trỏ vào S3 Processed bucket.
 - Phase 4: BI Visualization & Handover (Tuần 7-8)
   - Phát triển QuickSight Dashboards (Trip Demand, Revenue per Vendor, Heatmaps).
