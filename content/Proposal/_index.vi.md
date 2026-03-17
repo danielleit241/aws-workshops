@@ -39,6 +39,8 @@ Giải pháp kỹ thuật (Technical Solution): Triển khai kiến trúc Modern
 
 **Kiến trúc giải pháp (Solution Architecture)**
 
+![overview](/images/Proposal/diagram-architecture.jpg)
+
 Kiến trúc hệ thống đi theo luồng xử lý:
 Raw &rarr; Processing &rarr; Analytics &rarr; Visualization.
 

@@ -39,6 +39,8 @@ Technical Solution: Deploy a modern Data Lakehouse architecture on AWS:
 
 **Solution Architecture**
 
+![overview](/images/Proposal/diagram-architecture.jpg)
+
 The system architecture follows this processing flow:
 Raw &rarr; Processing &rarr; Analytics &rarr; Visualization.
 
