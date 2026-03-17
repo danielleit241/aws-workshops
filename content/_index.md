@@ -7,16 +7,16 @@ chapter: false
 
 # Workshop Documentation Template
 
-Template gồm **Proposal** (phần 1) và **Workshop** (phần 2, RAG với Amazon Bedrock) để tái sử dụng cho đề xuất dự án và workshop/docs.
+This template includes **Proposal** (Part 1) and **Workshop** (Part 2, RAG with Amazon Bedrock) so it can be reused for project proposals and workshop/docs.
 
 
-### Nội dung
+### Contents
 
-1. [Proposal](Proposal/) — Đề xuất dự án / ý tưởng
-2. [Workshop](Workshop/) — Tài liệu workshop (Overview, Prerequisite, Knowledge Base, Test, Client Integration, Update Data, Cleanup)
+1. [Proposal](Proposal/) — Project proposal / idea
+2. [Workshop](Workshop/) — Workshop documentation (Overview, Prerequisites, Knowledge Base, Test, Client Integration, Update Data, Cleanup)
 
-- Chỉnh sửa `content/Proposal/` cho phần đề xuất; đặt file PDF trong `static/files/Proposal/`, ảnh trong `static/images/Proposal/`.
-- Chỉnh sửa `content/Workshop/` theo nội dung workshop; đặt ảnh vào `static/images/Workshop/` (giữ cấu trúc thư mục con tương ứng).
+- Edit `content/Proposal/` for the proposal section; place PDF files in `static/files/Proposal/` and images in `static/images/Proposal/`.
+- Edit `content/Workshop/` based on the workshop content; place images in `static/images/Workshop/` while keeping the corresponding subfolder structure.
 
 ## 👥 Team Members
 
