@@ -20,9 +20,9 @@ chapter: false
   <h3 style="margin: 10px 0; color: #2c3e50;">Triệu Quốc Hào</h3>
   <p style="margin: 5px 0; color: #e74c3c; font-weight: bold; font-size: 16px;">👑 Leader - Data Scientist</p>
   <hr style="border: none; border-top: 1px solid #ecf0f1; margin: 10px 0;">
-  <p style="margin: 5px 0; font-size: 13px;">📧 haotqse180011@fpt.edu.vn</p>
-  <p style="margin: 5px 0; font-size: 13px;">📱 078-491-9197</p>
-  <p style="margin: 5px 0; font-size: 12px; color: #95a5a6;">🆔 SE180011</p>
+  <p style="margin: 5px 0; font-size: 13px;">Email: haotqse180011@fpt.edu.vn</p>
+  <p style="margin: 5px 0; font-size: 13px;">Phone: 078-491-9197</p>
+  <p style="margin: 5px 0; font-size: 13px;">ID: SE180011</p>
 </div>
 
 <!-- Member 2 -->
@@ -31,9 +31,9 @@ chapter: false
   <h3 style="margin: 10px 0; color: #2c3e50;">Nguyễn Quách Lam Giang</h3>
   <p style="margin: 5px 0; color: #f39c12; font-weight: bold; font-size: 16px;">📊 Data Engineer</p>
   <hr style="border: none; border-top: 1px solid #ecf0f1; margin: 10px 0;">
-  <p style="margin: 5px 0; font-size: 13px;">📧 nguyenlamgiang2198@gmail.com</p>
-  <p style="margin: 5px 0; font-size: 13px;">📱 089-9197-017</p>
-  <p style="margin: 5px 0; font-size: 12px; color: #95a5a6;">🆔 SE194447</p>
+  <p style="margin: 5px 0; font-size: 13px;">Email: nguyenlamgiang2198@gmail.com</p>
+  <p style="margin: 5px 0; font-size: 13px;">Phone: 089-9197-017</p>
+  <p style="margin: 5px 0; font-size: 13px;">ID: SE194447</p>
 </div>
 
 <!-- Member 3 -->
@@ -42,9 +42,9 @@ chapter: false
   <h3 style="margin: 10px 0; color: #2c3e50;">Nguyễn Văn Anh Duy</h3>
   <p style="margin: 5px 0; color: #3498db; font-weight: bold; font-size: 16px;">🤖 AI Engineer</p>
   <hr style="border: none; border-top: 1px solid #ecf0f1; margin: 10px 0;">
-  <p style="margin: 5px 0; font-size: 13px;">📧 duynguyenvananh@gmail.com</p>
-  <p style="margin: 5px 0; font-size: 13px;">📱 038-788-3041</p>
-  <p style="margin: 5px 0; font-size: 12px; color: #95a5a6;">🆔 SE181823</p>
+  <p style="margin: 5px 0; font-size: 13px;">Email: duynguyenvananh@gmail.com</p>
+  <p style="margin: 5px 0; font-size: 13px;">Phone: 038-788-3041</p>
+  <p style="margin: 5px 0; font-size: 13px;">ID: SE181823</p>
 </div>
 
 <!-- Member 4 -->
@@ -53,9 +53,9 @@ chapter: false
   <h3 style="margin: 10px 0; color: #2c3e50;">Trần Huỳnh Bảo Minh</h3>
   <p style="margin: 5px 0; color: #3498db; font-weight: bold; font-size: 16px;">🤖 AI Engineer</p>
   <hr style="border: none; border-top: 1px solid #ecf0f1; margin: 10px 0;">
-  <p style="margin: 5px 0; font-size: 13px;">📧 baominhbrthcs@gmail.com</p>
-  <p style="margin: 5px 0; font-size: 13px;">📱 078-222-4999</p>
-  <p style="margin: 5px 0; font-size: 12px; color: #95a5a6;">🆔 SE193028</p>
+  <p style="margin: 5px 0; font-size: 13px;">Email: baominhbrthcs@gmail.com</p>
+  <p style="margin: 5px 0; font-size: 13px;">Phone: 078-222-4999</p>
+  <p style="margin: 5px 0; font-size: 13px;">ID: SE193028</p>
 </div>
 
 <!-- Member 5 -->
@@ -64,9 +64,9 @@ chapter: false
   <h3 style="margin: 10px 0; color: #2c3e50;">Lê Vũ Phương Hoà</h3>
   <p style="margin: 5px 0; color: #27ae60; font-weight: bold; font-size: 16px;">⚙️ Backend Engineer</p>
   <hr style="border: none; border-top: 1px solid #ecf0f1; margin: 10px 0;">
-  <p style="margin: 5px 0; font-size: 13px;">📧 hoalvpse181951@fpt.edu.vn</p>
-  <p style="margin: 5px 0; font-size: 13px;">📱 032-703-0024</p>
-  <p style="margin: 5px 0; font-size: 12px; color: #95a5a6;">🆔 SE181951</p>
+  <p style="margin: 5px 0; font-size: 13px;">Email: hoalvpse181951@fpt.edu.vn</p>
+  <p style="margin: 5px 0; font-size: 13px;">Phone: 032-703-0024</p>
+  <p style="margin: 5px 0; font-size: 13px;">ID: SE181951</p>
 </div>
 
 <!-- Member 6 -->
@@ -75,9 +75,9 @@ chapter: false
   <h3 style="margin: 10px 0; color: #2c3e50;">Nguyễn Công Minh</h3>
   <p style="margin: 5px 0; color: #27ae60; font-weight: bold; font-size: 16px;">⚙️ Backend Engineer</p>
   <hr style="border: none; border-top: 1px solid #ecf0f1; margin: 10px 0;">
-  <p style="margin: 5px 0; font-size: 13px;">📧 minhncse182968@fpt.edu.vn</p>
-  <p style="margin: 5px 0; font-size: 13px;">📱 036-240-1520</p>
-  <p style="margin: 5px 0; font-size: 12px; color: #95a5a6;">🆔 SE182968</p>
+  <p style="margin: 5px 0; font-size: 13px;">Email: minhncse182968@fpt.edu.vn</p>
+  <p style="margin: 5px 0; font-size: 13px;">Phone: 036-240-1520</p>
+  <p style="margin: 5px 0; font-size: 13px;">ID: SE182968</p>
 </div>
 
 <!-- Member 7 -->
@@ -86,9 +86,9 @@ chapter: false
   <h3 style="margin: 10px 0; color: #2c3e50;">Nguyễn Văn Duy Khiêm</h3>
   <p style="margin: 5px 0; color: #27ae60; font-weight: bold; font-size: 16px;">⚙️ Backend Engineer</p>
   <hr style="border: none; border-top: 1px solid #ecf0f1; margin: 10px 0;">
-  <p style="margin: 5px 0; font-size: 13px;">📧 khiemnguyen120216@gmail.com</p>
-  <p style="margin: 5px 0; font-size: 13px;">📱 083-6262-507</p>
-  <p style="margin: 5px 0; font-size: 12px; color: #95a5a6;">🆔 SE180168</p>
+  <p style="margin: 5px 0; font-size: 13px;">Email: khiemnguyen120216@gmail.com</p>
+  <p style="margin: 5px 0; font-size: 13px;">Phone: 083-6262-507</p>
+  <p style="margin: 5px 0; font-size: 13px;">ID: SE180168</p>
 </div>
 
 </div>

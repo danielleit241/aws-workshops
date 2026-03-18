@@ -27,7 +27,7 @@ pre: " <b> 1. </b> "
 
 Vấn đề hiện tại (Current Challenges): Tập dữ liệu Yellow Taxi từ New York City Taxi and Limousine Commission chứa lượng thông tin khổng lồ nhưng mang nhiều "nhiễu" và bất thường ở dạng thô:
 
-- Chất lượng dữ liệu kém: Xuất hiện các cuốc xe không có hành khách (passenger_count = null), khoảng cách bằng 0 (trip_distance = 0), hoặc cước phí bị âm (fare_amount < 0).
+- Chất lượng dữ liệu kém: Xuất hiện các cuốc xe không có hành khách (`passenger_count = null`), khoảng cách bằng 0 (`trip_distance = 0`), hoặc cước phí bị âm (`fare_amount < 0`).
 - Thiếu tự động hóa: Việc xử lý dữ liệu thủ công hoặc bằng các hệ thống cũ tốn nhiều thời gian, dễ gây sai sót và không có khả năng mở rộng (scale) khi dung lượng dữ liệu tăng lên hàng tháng (file Parquet/CSV mới).
 - Phân mảnh thông tin: Dữ liệu không được tập trung tại một nguồn duy nhất (Single Source of Truth), khiến việc lập báo cáo doanh thu và phân tích hành vi khách hàng gặp khó khăn, độ trễ cao.
 
@@ -35,9 +35,11 @@ Giải pháp kỹ thuật (Technical Solution): Triển khai kiến trúc Modern
 
 - Tự động kích hoạt (Event-driven): Sử dụng Amazon EventBridge để tự động bắt sự kiện khi có file dữ liệu mới được upload, loại bỏ thao tác thủ công.
 - Kiểm soát chất lượng chặt chẽ: Sử dụng AWS Glue DataBrew để Profiling (phân tích cấu trúc) và AWS Lambda để rẽ nhánh logic (Ví dụ: Tự động cảnh báo nếu tỷ lệ lỗi dữ liệu > 20%, ngược lại tiếp tục quy trình).
-- Chuẩn hóa và Tối ưu: Làm sạch dữ liệu, tạo thêm các biến có ý nghĩa (Feature Engineering như trip_duration, trip_speed) và lưu trữ dưới định dạng Columnar (Parquet) theo phân vùng (Partitioning) để tối ưu chi phí và tốc độ truy vấn.
+- Chuẩn hóa và Tối ưu: Làm sạch dữ liệu, tạo thêm các biến có ý nghĩa (Feature Engineering như `trip_duration`, `trip_speed`) và lưu trữ dưới định dạng Columnar (Parquet) theo phân vùng (Partitioning) để tối ưu chi phí và tốc độ truy vấn.
 
 **Kiến trúc giải pháp (Solution Architecture)**
+
+![overview](/images/Proposal/diagram-architecture.jpg)
 
 Kiến trúc hệ thống đi theo luồng xử lý:
 Raw &rarr; Processing &rarr; Analytics &rarr; Visualization.
@@ -45,13 +47,13 @@ Raw &rarr; Processing &rarr; Analytics &rarr; Visualization.
 Kiến trúc Kỹ thuật (Workflow Overview)
 
 - Ingestion: Dữ liệu thô (Parquet/CSV) được đẩy vào Data Lake S3 Raw Bucket.
-- Trigger: Sự kiện ObjectCreated từ S3 kích hoạt EventBridge.
+- Trigger: Sự kiện `ObjectCreated` từ S3 kích hoạt EventBridge.
 - Orchestration: EventBridge gọi Step Functions để điều phối toàn bộ vòng đời pipeline (Retry, Logging).
 - Profiling: Glue DataBrew phân tích dataset, tìm ra các điểm bất thường (missing, outliers, mismatch).
 - Validation: Lambda đọc kết quả Profiling để quyết định bước tiếp theo hoặc gửi cảnh báo lỗi.
 - Transformation: Glue DataBrew Recipe thực thi ETL (làm sạch dữ liệu, chuẩn hóa kiểu dữ liệu, Feature Engineering).
 - Processed Storage: Dữ liệu sạch được lưu vào S3 Processed Bucket (định dạng Parquet, phân vùng theo Year/Month/Day).
-- Data Warehousing: Sử dụng lệnh COPY để nạp dữ liệu từ S3 vào bảng fact_taxi_trip trong Amazon Redshift phục vụ OLAP. Song song, Amazon Athena hỗ trợ truy vấn Ad-hoc trực tiếp trên S3.
+- Data Warehousing: Sử dụng lệnh `COPY` để nạp dữ liệu từ S3 vào bảng `fact_taxi_trip` trong Amazon Redshift phục vụ OLAP. Song song, Amazon Athena hỗ trợ truy vấn Ad-hoc trực tiếp trên S3.
 - Visualization: Amazon QuickSight kết nối với Redshift/Athena để hiển thị Dashboard (Trip Demand, Revenue, Spatial Analysis).
 
 Technology Stack:
@@ -74,38 +76,35 @@ Lộ trình và Milestones (Dự kiến 8 tuần)
 - Phase 1: Foundation & Data Ingestion (Tuần 1-2)
   - Thiết lập môi trường AWS, cấu hình IAM Roles và Security.
   - Tạo S3 Buckets (Raw & Processed).
-  - Thiết lập EventBridge trigger S3 ObjectCreated.
+  - Thiết lập EventBridge trigger S3 `ObjectCreated`.
 - Phase 2: Orchestration & Data Processing (Tuần 3-5)
   - Tạo Glue DataBrew Profiles để phân tích cấu trúc schema của Taxi data.
-  - Viết DataBrew Recipes thực hiện ETL (Xóa null, lọc giá trị âm, tạo biến trip_duration, trip_speed).
+  - Viết DataBrew Recipes thực hiện ETL (Xóa null, lọc giá trị âm, tạo biến `trip_duration`, `trip_speed`).
   - Lập trình AWS Lambda function để đọc rules và rẽ nhánh.
   - Đóng gói quy trình vào AWS Step Functions.
 - Phase 3: Data Warehousing & Querying (Tuần 6)
-  - Thiết lập Amazon Redshift Cluster, tạo schema fact_taxi_trip.
-  - Tạo luồng tự động COPY dữ liệu từ S3 Processed vào Redshift.
+  - Thiết lập Amazon Redshift Cluster, tạo schema `fact_taxi_trip`.
+  - Tạo luồng tự động `COPY` dữ liệu từ S3 Processed vào Redshift.
   - Cấu hình Amazon Athena trỏ vào S3 Processed bucket.
 - Phase 4: BI Visualization & Handover (Tuần 7-8)
   - Phát triển QuickSight Dashboards (Trip Demand, Revenue per Vendor, Heatmaps).
   - Thiết lập CloudWatch Alarms & SNS (cảnh báo qua Email/Slack khi ETL failed).
   - Kiểm thử toàn trình (UAT) và bàn giao tài liệu hệ thống.
 
-Ước lượng chi phí (Cost Estimation Model)
+**Ước lượng chi phí (Cost Estimation Model)** 
 
-Hệ thống tận dụng tối đa kiến trúc Serverless, chi phí sẽ tính theo dạng Pay-as-you-go (Dùng bao nhiêu trả bấy nhiêu). Cơ cấu chi phí hàng tháng dự kiến phân bổ như sau:
+Hệ thống tận dụng tối đa kiến trúc Serverless, chi phí sẽ tính theo dạng Pay-as-you-go (Dùng bao nhiêu trả bấy nhiêu). Để tối ưu
+chi phí, chúng tôi sẽ để region ở `us-east-2` và **Redshift** sẽ được dùng trong 1 tiếng.
+Cơ cấu chi phí hàng tháng dự kiến phân bổ như sau:
 
-- AWS Services:
-  - AWS Amplify Hosting: $0.00 trong gói Free Tier: 500 phút build, 5 GB dữ liệu được phân phối. Sau khi hết Free Tier: khoảng $0.01/phút × 500 = $5.00/tháng.
-  - AWS Lambda: $0.00/month (20,000 requests/ngày, 128 MB, 200 ms trung bình).
-  - Amazon API Gateway: $0.00/month (600,000 requests/tháng, dưới mức Free Tier).
-  - Amazon DynamoDB: $0.00/month (5 GB dữ liệu, 100K đọc/ghi mỗi ngày).
-  - Amazon S3 (Lưu ảnh): $0.12/month (10 GB lưu trữ, 5,000 yêu cầu GET/PUT).
-  - Amazon SES (Gửi email): $0.00/month (2,000 email/tháng trong Free Tier).
-  - Amazon Personalize: $0.00 trong 2 tháng đầu (20 GB dữ liệu, 50 ngàn lượt tương tác). Sau đó: khoảng $8.00/tháng với batch inference (với tập dữ liệu nhỏ và huấn luyện lại hàng tuần $0.067 per 1 ngàn lượt tương tác).
-  - Bảng điều khiển tùy chỉnh (Amplify + Chart.js): $0.00/month (sử dụng Amplify hiện có, dữ liệu từ S3/DynamoDB).
-  - Amazon Location Service: $0.00/month (10,000 yêu cầu bản đồ, 1,000 yêu cầu định vị).
-  - Amazon EventBridge (Scheduler): $0.00/month (10 quy tắc kích hoạt hàng ngày/giờ).
-  - AWS IAM + KMS + WAF: $0.00/month (xác thực, mã hóa và bảo mật cơ bản).
-- Tổng chi phí ước tính:
-  - Tháng 1: $0.12/month (Tất cả nằm trong Free Tier)
-  - Tháng 2: $5.12/month (Personalize vẫn trong Free Tier, Amplify bắt đầu tính phí)
-  - Sau khi hết Free Tier: $13.12/month, ≈ $157.44/năm
+| Dịch vụ AWS                      | Chi phí / tuần     |
+| -------------------------------- | -------------------|
+| Amazon S3                        | $1.50              |
+| EventBridge, Step Functions      | $0.15              |
+| AWS Lambda                       | $0.00 (Free Tier)  |
+| AWS Glue DataBrew                | $7.50              |
+| Amazon Redshift Serverless       | $11.00             |
+| Amazon Athena                    | $0.50              |
+| Amazon QuickSight Enterprise     | $8.00              |
+| IAM, CloudTrail, CloudWatch, SNS | $1.00              |
+| **Tổng cộng**                    | **$29.65**         |
