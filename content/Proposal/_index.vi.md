@@ -91,23 +91,20 @@ Lộ trình và Milestones (Dự kiến 8 tuần)
   - Thiết lập CloudWatch Alarms & SNS (cảnh báo qua Email/Slack khi ETL failed).
   - Kiểm thử toàn trình (UAT) và bàn giao tài liệu hệ thống.
 
-Ước lượng chi phí (Cost Estimation Model)
+**Ước lượng chi phí (Cost Estimation Model)** 
 
-Hệ thống tận dụng tối đa kiến trúc Serverless, chi phí sẽ tính theo dạng Pay-as-you-go (Dùng bao nhiêu trả bấy nhiêu). Cơ cấu chi phí hàng tháng dự kiến phân bổ như sau:
+Hệ thống tận dụng tối đa kiến trúc Serverless, chi phí sẽ tính theo dạng Pay-as-you-go (Dùng bao nhiêu trả bấy nhiêu). Để tối ưu
+chi phí, chúng tôi sẽ để region ở `us-east-2` và **Redshift** sẽ được dùng trong 1 tiếng.
+Cơ cấu chi phí hàng tháng dự kiến phân bổ như sau:
 
-- AWS Services:
-  - AWS Amplify Hosting: $0.00 trong gói Free Tier: 500 phút build, 5 GB dữ liệu được phân phối. Sau khi hết Free Tier: khoảng $0.01/phút × 500 = $5.00/tháng.
-  - AWS Lambda: $0.00/month (20,000 requests/ngày, 128 MB, 200 ms trung bình).
-  - Amazon API Gateway: $0.00/month (600,000 requests/tháng, dưới mức Free Tier).
-  - Amazon DynamoDB: $0.00/month (5 GB dữ liệu, 100K đọc/ghi mỗi ngày).
-  - Amazon S3 (Lưu ảnh): $0.12/month (10 GB lưu trữ, 5,000 yêu cầu GET/PUT).
-  - Amazon SES (Gửi email): $0.00/month (2,000 email/tháng trong Free Tier).
-  - Amazon Personalize: $0.00 trong 2 tháng đầu (20 GB dữ liệu, 50 ngàn lượt tương tác). Sau đó: khoảng $8.00/tháng với batch inference (với tập dữ liệu nhỏ và huấn luyện lại hàng tuần $0.067 per 1 ngàn lượt tương tác).
-  - Bảng điều khiển tùy chỉnh (Amplify + Chart.js): $0.00/month (sử dụng Amplify hiện có, dữ liệu từ S3/DynamoDB).
-  - Amazon Location Service: $0.00/month (10,000 yêu cầu bản đồ, 1,000 yêu cầu định vị).
-  - Amazon EventBridge (Scheduler): $0.00/month (10 quy tắc kích hoạt hàng ngày/giờ).
-  - AWS IAM + KMS + WAF: $0.00/month (xác thực, mã hóa và bảo mật cơ bản).
-- Tổng chi phí ước tính:
-  - Tháng 1: $0.12/month (Tất cả nằm trong Free Tier)
-  - Tháng 2: $5.12/month (Personalize vẫn trong Free Tier, Amplify bắt đầu tính phí)
-  - Sau khi hết Free Tier: $13.12/month, ≈ $157.44/năm
+| Dịch vụ AWS                      | Chi phí / tuần     |
+| -------------------------------- | -------------------|
+| Amazon S3                        | $1.50              |
+| EventBridge, Step Functions      | $0.15              |
+| AWS Lambda                       | $0.00 (Free Tier)  |
+| AWS Glue DataBrew                | $7.50              |
+| Amazon Redshift Serverless       | $11.00             |
+| Amazon Athena                    | $0.50              |
+| Amazon QuickSight Enterprise     | $8.00              |
+| IAM, CloudTrail, CloudWatch, SNS | $1.00              |
+| **Tổng cộng**                    | **$29.65**         |

@@ -92,23 +92,20 @@ Roadmap and Milestones (Estimated 8 weeks)
   - Set up CloudWatch alarms and SNS notifications to alert via email or Slack when ETL fails.
   - Perform end-to-end UAT testing and hand over the system documentation.
 
-Cost Estimation Model
+**Cost Estimation Model**
 
-The system maximizes the use of serverless architecture, so costs follow a pay-as-you-go model. The estimated monthly cost breakdown is as follows:
+The system maximizes the use of serverless architecture, so costs follow a pay-as-you-go model. To optimze the cost,
+we will put region in `us-east-2` and **Redshift** will only used in 1 hour.
+The estimated monthly cost breakdown is as follows:
 
-- AWS Services:
-  - AWS Amplify Hosting: $0.00 under the Free Tier, including 500 build minutes and 5 GB of delivered data. After the Free Tier: about $0.01/minute x 500 = $5.00/month.
-  - AWS Lambda: $0.00/month for 20,000 requests/day, 128 MB memory, and 200 ms average duration.
-  - Amazon API Gateway: $0.00/month for 600,000 requests/month, which stays under the Free Tier.
-  - Amazon DynamoDB: $0.00/month for 5 GB of data and 100K read/write requests per day.
-  - Amazon S3 (image storage): $0.12/month for 10 GB of storage and 5,000 GET/PUT requests.
-  - Amazon SES (email sending): $0.00/month for 2,000 emails/month within the Free Tier.
-  - Amazon Personalize: $0.00 for the first 2 months for 20 GB of data and 50,000 interactions. After that: about $8.00/month with batch inference for a small dataset and weekly retraining at $0.067 per 1,000 interactions.
-  - Custom dashboard (Amplify + Chart.js): $0.00/month using the existing Amplify setup and data from S3/DynamoDB.
-  - Amazon Location Service: $0.00/month for 10,000 map requests and 1,000 geolocation requests.
-  - Amazon EventBridge (Scheduler): $0.00/month for 10 daily/hourly trigger rules.
-  - AWS IAM + KMS + WAF: $0.00/month for basic authentication, encryption, and security.
-- Total estimated cost:
-  - Month 1: $0.12/month, with everything within the Free Tier.
-  - Month 2: $5.12/month, with Personalize still in the Free Tier and Amplify beginning to incur charges.
-  - After the Free Tier ends: $13.12/month, approximately $157.44/year.
+| AWS services                     | Cost / Week        |
+| -------------------------------- | -------------------|
+| Amazon S3                        | $1.50              |
+| EventBridge, Step Functions      | $0.15              |
+| AWS Lambda                       | $0.00 (Free Tier)  |
+| AWS Glue DataBrew                | $7.50              |
+| Amazon Redshift                  | $11.00             |
+| Amazon Athena                    | $0.50              |
+| Amazon QuickSight                | $8.00              |
+| IAM, CloudTrail, CloudWatch, SNS | $1.00              |
+| **Total**                        | **$29.65**         |
