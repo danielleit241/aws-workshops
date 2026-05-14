@@ -20,4 +20,4 @@ After completing this session, you will be able to:
 - Verify the generated table in the Glue Data Catalog
 
 ## Architecture Overview
-![overview](/images/Proposal/diagram-architecture.jpg)
+![overview](/images/Workshop/4.Glue/4.1Crawler/diagram-architecture.jpg)
