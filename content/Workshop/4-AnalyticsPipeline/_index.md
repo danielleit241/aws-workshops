@@ -13,7 +13,7 @@ In this chapter, we will learn the fundamental concepts behind an analytics pipe
 The purpose of this chapter is to help you understand how these AWS services work together before we start the hands-on labs.
 
 {{% notice info %}}
-This page focuses on concepts and architecture.The detailed step-by-step configuration will be covered in the next sections.
+This page focuses on concepts and architecture. The detailed step-by-step configuration will be covered in the next sections.
 {{% /notice %}}
 
 ---
@@ -37,7 +37,8 @@ Amazon S3 Processed Data
 ```
 The simplified architecture is shown below:
 
-![Analytics Pipeline Overview](/images/Workshop/4.Glue/4.1Crawler/aws-glue-crawler-etl-flow.png)
+![Analytics Pipeline Overview](/images/Workshop/4.Glue/4.1.Crawler/aws-glue-crawler-etl-flow.png)
+
 
 ---
 At a high level:
@@ -48,7 +49,9 @@ At a high level:
 - AWS Glue Visual ETL reads the cataloged data and transforms it.
 - Amazon S3 stores the processed output.
 
-Why Do We Need This Pipeline?
+---
+
+## Why Do We Need This Pipeline?
 
 Raw data stored in Amazon S3 is useful, but by itself it is not always ready for analytics.
 
@@ -64,9 +67,9 @@ AWS Glue helps solve this by providing metadata discovery, catalog management, a
 
 {{% notice tip %}}
 A good data pipeline separates three responsibilities:
-Storage: where the data lives.
-Metadata: how the data is described.
-Processing: how the data is transformed.
+- **Storage**: where the data lives.
+- **Metadata**: how the data is described.
+- **Processing**: how the data is transformed.
 {{% /notice %}}
 
 ### Core Services in This Pipeline
@@ -80,6 +83,7 @@ This workshop uses four main components.
 | AWS Glue Visual ETL   | Builds a visual workflow to transform data                       |
 
 ### Amazon S3: Data Storage Layer
+
 Amazon S3 is used as the storage layer of the data pipeline.
 
 In this workshop, raw data is stored in S3 using Parquet format.
@@ -89,6 +93,7 @@ Parquet is commonly used for analytics workloads because it is:
 - Compressed
 - Efficient for large-scale data processing
 - Well supported by AWS Glue and Spark-based ETL jobs
+
 A common S3 layout in a data lake looks like this:
 ```txt
 s3://data-lake/raw/
@@ -96,9 +101,10 @@ s3://data-lake/processed/
 s3://data-lake/curated/ 
 ```
 {{% notice info %}}
-In this workshop, the raw data is stored in S3 first.AWS Glue will not replace S3. It will only discover and process the data stored there.
+In this workshop, the raw data is stored in S3 first. AWS Glue will not replace S3. It will only discover and process the data stored there.
 {{% /notice %}}
 ### AWS Glue Crawler: Schema Discovery Layer
+
 AWS Glue Crawler is responsible for scanning the raw data in S3.
 
 The crawler reads the files and tries to understand their structure.
@@ -110,6 +116,7 @@ It can detect:
 - Partition structure
 - S3 location
 - Table metadata
+
 After scanning the files, the crawler creates or updates tables in the AWS Glue Data Catalog.
 
 {{% notice warning %}}
@@ -131,6 +138,7 @@ Format: Parquet
 
 ```
 ### AWS Glue Data Catalog: Metadata Layer
+
 AWS Glue Data Catalog is a centralized metadata repository.
 
 It stores information about your datasets, such as:
@@ -141,15 +149,13 @@ It stores information about your datasets, such as:
 - Partition keys
 - File format
 - S3 location
+
 The Data Catalog does not store the actual data rows.
 
 Instead, it tells AWS services how to find and read the data from S3.
 
 {{% notice tip %}}
-Think of the Data Catalog as a map.
-
-S3 stores the actual data.
-The Data Catalog tells Glue where the data is and how to understand it.
+Think of the Data Catalog as a map. S3 stores the actual data. The Data Catalog tells Glue where the data is and how to understand it.
 {{% /notice %}}
 
 Example metadata:
@@ -161,6 +167,7 @@ Location: s3://yellow-taxi-trip-demo-fcaj/
 Columns: vendor_id, pickup_datetime, dropoff_datetime, total_amount, ...
 ```
 ### AWS Glue Visual ETL: Transformation Layer
+
 After the data is cataloged, we can use AWS Glue Visual ETL to build a transformation workflow.
 
 Visual ETL allows us to design an ETL job using a visual interface instead of writing the full Spark code manually.
@@ -187,7 +194,7 @@ Glue ETL Job transforms data
         ↓
 Glue ETL Job writes processed data to S3
 ```
-How the Services Work Together
+## How the Services Work Together
 
 The full flow works like this:
 
@@ -215,7 +222,7 @@ Before moving to the hands-on labs, make sure you understand these key ideas:
 | Visual ETL transforms data   | It uses catalog metadata to read and process S3 data |
 | Output goes back to S3       | Processed data is written to a target S3 bucket      |
 
-Module Structure
+### Module Structure
 
 This chapter includes the following sections:
 | Section          | Purpose                                              |
@@ -224,7 +231,7 @@ This chapter includes the following sections:
 | AWS Glue Catalog | Review the generated database and table metadata     |
 | AWS Glue ETL Job | Build a Visual ETL workflow to transform data        |
 
-Key Takeaways
+### Key Takeaways
 
 By the end of this introduction, you should understand that:
 
@@ -235,7 +242,5 @@ By the end of this introduction, you should understand that:
 - The pipeline starts with raw data and ends with processed data in S3.
 
 {{% notice tip %}}
-A simple way to remember the pipeline:
-
-Store → Discover → Catalog → Transform → Store
+A simple way to remember the pipeline: Store → Discover → Catalog → Transform → Store
 {{% /notice %}}
