@@ -2,11 +2,9 @@
 title: "Analytics Pipeline with AWS Glue"
 date: "2026-05-02"
 weight: 4
-chapter: true
-pre: "<b>4. </b>"
+chapter: false
+pre: " <b> 4. </b> "
 ---
-
-# Analytics Pipeline with AWS Glue
 
 In this chapter, we will learn the fundamental concepts behind an analytics pipeline using **Amazon S3**, **AWS Glue Crawler**, **AWS Glue Data Catalog**, and **AWS Glue Visual ETL**.
 
@@ -16,9 +14,8 @@ The purpose of this chapter is to help you understand how these AWS services wor
 This page focuses on concepts and architecture. The detailed step-by-step configuration will be covered in the next sections.
 {{% /notice %}}
 
----
 
-## What Is an Analytics Pipeline?
+### What Is an Analytics Pipeline?
 
 An **analytics pipeline** is a process that takes raw data, prepares it, transforms it, and makes it ready for analysis or reporting.
 
@@ -40,7 +37,6 @@ The simplified architecture is shown below:
 ![Analytics Pipeline Overview](/images/Workshop/4.Glue/4.1.Crawler/aws-glue-crawler-etl-flow.png)
 
 
----
 At a high level:
 
 - Amazon S3 stores the raw data files.
@@ -49,9 +45,7 @@ At a high level:
 - AWS Glue Visual ETL reads the cataloged data and transforms it.
 - Amazon S3 stores the processed output.
 
----
-
-## Why Do We Need This Pipeline?
+### Why Do We Need This Pipeline?
 
 Raw data stored in Amazon S3 is useful, but by itself it is not always ready for analytics.
 
@@ -103,6 +97,7 @@ s3://data-lake/curated/
 {{% notice info %}}
 In this workshop, the raw data is stored in S3 first. AWS Glue will not replace S3. It will only discover and process the data stored there.
 {{% /notice %}}
+
 ### AWS Glue Crawler: Schema Discovery Layer
 
 AWS Glue Crawler is responsible for scanning the raw data in S3.
@@ -137,6 +132,7 @@ Location: s3://yellow-taxi-trip-demo-fcaj/
 Format: Parquet
 
 ```
+
 ### AWS Glue Data Catalog: Metadata Layer
 
 AWS Glue Data Catalog is a centralized metadata repository.
@@ -166,6 +162,7 @@ Format: Parquet
 Location: s3://yellow-taxi-trip-demo-fcaj/
 Columns: vendor_id, pickup_datetime, dropoff_datetime, total_amount, ...
 ```
+
 ### AWS Glue Visual ETL: Transformation Layer
 
 After the data is cataloged, we can use AWS Glue Visual ETL to build a transformation workflow.
@@ -194,7 +191,8 @@ Glue ETL Job transforms data
         ↓
 Glue ETL Job writes processed data to S3
 ```
-## How the Services Work Together
+
+### How the Services Work Together
 
 The full flow works like this:
 
