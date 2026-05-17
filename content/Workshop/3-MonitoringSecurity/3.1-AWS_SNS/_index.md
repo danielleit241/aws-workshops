@@ -12,7 +12,7 @@ We will perform a quick test run to ensure your account is ready, and then compl
 
 **Step 1: Access the AWS Console**
 
-First, use the search bar to navigate to Amazon Simple Notification Service: https://console.aws.amazon.com/sns/home
+First, use the search bar to navigate to [Amazon Simple Notification Service](https://console.aws.amazon.com/sns/home)
 
 ![3.1.1](/images/Workshop/3-Monitoring&Security/3.1.1.svg)
 
@@ -68,5 +68,5 @@ Confirm that the subscription status shows **Confirmed**.
 
 ![3.1.10](/images/Workshop/3-Monitoring&Security/3.1.10.svg)
 
-**Congratulations — you have completed the AWS SNS setup.**
+**Congratulations — you have completed the AWS SNS configuration.**
 
