@@ -3,7 +3,7 @@ title: "Ghi vết Hệ thống với AWS CloudTrail"
 date: "2026-05-02"
 weight: 3
 chapter: false
-pre: " <b> 3. </b> "
+pre: " <b> 3.3 </b> "
 ---
 
 Lưu nhật ký bảo mật xem ai đã chỉnh sửa các tác vụ trên AWS Management Console.

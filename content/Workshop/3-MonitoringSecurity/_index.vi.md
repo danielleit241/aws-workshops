@@ -21,19 +21,9 @@ Trong kiến trúc Data Pipeline, việc dữ liệu được lưu chuyển từ
 ### Luồng hoạt động Security & Monitoring
 
 1. [Thiết lập Hệ thống Cảnh báo với Amazon SNS](/content/Workshop/3-MonitoringSecurity/3.1-AWS_SNS/_index.vi.md)
-
-- Khởi tạo SNS Topic đóng vai trò là tổng đài nhận và phát thông báo.
-
 2. [Tạo IAM Role cho AWS Glue](/content/Workshop/3-MonitoringSecurity/3.2-AWS_IAM/_index.vi.md)
-
-- Thiết lập IAM Role cấp quyền để dịch vụ AWS Glue lấy dữ liệu, xử lý và ghi log.
-
 3. [Ghi vết Hệ thống với AWS CloudTrail](/content/Workshop/3-MonitoringSecurity/3.3-AWS_CloudTrail/_index.vi.md) 
-
-- Bật CloudTrail để hệ thống bắt đầu quá trình ghi hình (audit) toàn bộ dự án.
-
 4. [Thiết lập Báo động Lỗi Data Pipeline với Amazon EventBridge (CloudWatch)](/content/Workshop/3-MonitoringSecurity/3.4-AWS_EventBridge_(CloudWatch)/_index.vi.md)
-- Thiết lập quy tắc EventBridge (CloudWatch): Theo dõi trạng thái của các Glue Jobs. Nếu Job báo lỗi (FAILED), tín hiệu lập tức được bắn sang SNS để gửi Email cảnh báo.
 
 
 
