@@ -3,7 +3,7 @@ title: "Thiết lập Hệ thống Cảnh báo với Amazon SNS"
 date: "2026-05-02"
 weight: 1
 chapter: false
-pre: " <b> 3.1 </b> "
+pre: " <b> 1. </b> "
 ---
 
 ### Các bước cấu hình Amazon SNS

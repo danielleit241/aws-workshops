@@ -20,7 +20,7 @@ In the Data Pipeline architecture, the movement of data from ***Source (S3) -> P
 
 ### Security & Monitoring Workflow
 
-1. [Set up an Alert System with Amazon SNS](/3.1-AWS_SNS/_index.md)
-2. [Create IAM Role for AWS Glue](/3.2-AWS_IAM/_index.md)
-3. [Track your system with AWS CloudTrail](/3-MonitoringSecurity/3.3-AWS_CloudTrail/_index.md) 
-4. [Set up Data Pipeline Error Alerts with Amazon EventBridge (CloudWatch)](/content/Workshop/3-MonitoringSecurity/3.4-AWS_EventBridge_(CloudWatch)/_index.md)
+1. [Set up an Alert System with Amazon SNS](/workshop/3-monitoringsecurity/3.1-aws_sns/)
+2. [Create IAM Role for AWS Glue](/workshop/3-monitoringsecurity/3.2-AWS_IAM)
+3. [Track your system with AWS CloudTrail](3.3-AWS_CloudTrail/) 
+4. [Set up Data Pipeline Error Alerts with Amazon EventBridge (CloudWatch)](/workshop/3-monitoringsecurity/3.4-AWS_EventBridge_(CloudWatch))

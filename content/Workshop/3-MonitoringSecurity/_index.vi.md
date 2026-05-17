@@ -20,10 +20,10 @@ Trong kiến trúc Data Pipeline, việc dữ liệu được lưu chuyển từ
 
 ### Luồng hoạt động Security & Monitoring
 
-1. [Thiết lập Hệ thống Cảnh báo với Amazon SNS](/content/Workshop/3-MonitoringSecurity/3.1-AWS_SNS/_index.vi.md)
-2. [Tạo IAM Role cho AWS Glue](/content/Workshop/3-MonitoringSecurity/3.2-AWS_IAM/_index.vi.md)
-3. [Ghi vết Hệ thống với AWS CloudTrail](/content/Workshop/3-MonitoringSecurity/3.3-AWS_CloudTrail/_index.vi.md) 
-4. [Thiết lập Báo động Lỗi Data Pipeline với Amazon EventBridge (CloudWatch)](/content/Workshop/3-MonitoringSecurity/3.4-AWS_EventBridge_(CloudWatch)/_index.vi.md)
+1. [Thiết lập Hệ thống Cảnh báo với Amazon SNS](/workshop/3-monitoringsecurity/3.1-AWS_SNS)
+2. [Tạo IAM Role cho AWS Glue](/Workshop/3-MonitoringSecurity/3.2-AWS_IAM)
+3. [Ghi vết Hệ thống với AWS CloudTrail](/Workshop/3-MonitoringSecurity/3.3-AWS_CloudTrail) 
+4. [Thiết lập Báo động Lỗi Data Pipeline với Amazon EventBridge (CloudWatch)](/Workshop/3-MonitoringSecurity/3.4-AWS_EventBridge_(CloudWatch))
 
 
 
