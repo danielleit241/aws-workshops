@@ -51,7 +51,7 @@ Data Catalog as a Metadata Layer
 
 The relationship can be understood like this:
 
-![DataCatalog](/images/Workshop/4.Glue/4.1.Crawler/aws_glue_data_catalog_flow.png)
+![DataCatalog](/images/Workshop/4.Glue/4.1.Crawler/4.1.15.png)
 
 {{% notice tip %}}
 You can think of Amazon S3 as the storage layer and AWS Glue Data Catalog as the map of the data.
@@ -65,7 +65,7 @@ Database
 
 A database is a logical container used to group related metadata tables.
 For example: 
-![DataCatalog](/images/Workshop/4.Glue/4.1.Crawler/ex_datacatalog.png)
+![DataCatalog](/images/Workshop/4.Glue/4.1.Crawler/4.1.17.png)
 
 This database does not contain the actual data. It only contains table definitions.
 

@@ -33,7 +33,7 @@ Raw data is stored in **Amazon S3** in Parquet format. **AWS Glue Crawler** scan
 The simplified workflow is:
 
 
-![workflow](/images/Workshop/4.Glue/4.1.Crawler/aws-glue-crawler-etl-flow.png)
+![workflow](/images/Workshop/4.Glue/4.1.Crawler/4.1.1.png)
 
 ### Key Concepts
 
@@ -99,43 +99,44 @@ You can change these names based on your own AWS environment.
 2. In the left navigation pane, choose **Crawlers**
 3. Choose **Add crawler**
 
-![OpenCrawlers](/images/Workshop/4.Glue/4.1.Crawler/create_crawler.png)
+![OpenCrawlers](/images/Workshop/4.Glue/4.1.Crawler/4.1.2.png)
 
 **Step 2: Choose Data Source and Classifiers**
 
 1. Click add a data source button
-![DataSrc](/images/Workshop/4.Glue/4.1.Crawler/add_data_src.png)
+![DataSrc](/images/Workshop/4.Glue/4.1.Crawler/4.1.3.png)
 
 2. Click Browse S3
-![BrowseS3](/images/Workshop/4.Glue/4.1.Crawler/browse_pathS3.png)
+![BrowseS3](/images/Workshop/4.Glue/4.1.Crawler/4.1.4.png)
         
 3. Select the S3 Bucket an click button Choose
-![ChooseBucket](/images/Workshop/4.Glue/4.1.Crawler/choose_s3_path.png)
+![ChooseBucket](/images/Workshop/4.Glue/4.1.Crawler/4.1.5.png)
         
 4. Click button Add S3 Data Source and click next
+![AddDataSorce](/images/Workshop/4.Glue/4.1.Crawler/4.1.16.png)
 
 **Step 3: Configure security settings**
 
 1. Click button **Create new IAM Role** and set name
-![IAMrole](/images/Workshop/4.Glue/4.1.Crawler/create_iam_button.png)
+![IAMrole](/images/Workshop/4.Glue/4.1.Crawler/4.1.6.png)
 
-![IAMRole2](/images/Workshop/4.Glue/4.1.Crawler/set_name_iam_role.png)
+![IAMRole2](/images/Workshop/4.Glue/4.1.Crawler/4.1.7.png)
         
 2. Click button **View to configure role access** to Read and Write data in S3
-![ViewRole](/images/Workshop/4.Glue/4.1.Crawler/view_role.png)
+![ViewRole](/images/Workshop/4.Glue/4.1.Crawler/4.1.8.png)
         
 3. Click **Permission policy** name to edit
-![EditPolicy](/images/Workshop/4.Glue/4.1.Crawler/tick_button_permission.png)
+![EditPolicy](/images/Workshop/4.Glue/4.1.Crawler/4.1.9.png)
         
 4. Click **Edit** permission to edit:
 - In the Action section, you should set S3:Get Object and Put Object to get permission to retrieve data from S3.
 - In the Resource section, since my parquet file contains many subfiles, I added /* so that it can read the files inside as well.
-![EditPermission](/images/Workshop/4.Glue/4.1.Crawler/edit_permission.png)
+![EditPermission](/images/Workshop/4.Glue/4.1.Crawler/4.1.10.png)
 
 **Step 4: Set output and scheduling**
 
 1. Click button **Add Database**
-![AddDB](/images/Workshop/4.Glue/4.1.Crawler/click_button_add_DB.png)
+![AddDB](/images/Workshop/4.Glue/4.1.Crawler/4.1.11.png)
         
 2. Create a standard Glue database in the Data Catalog.
 
@@ -143,14 +144,14 @@ You can change these names based on your own AWS environment.
 S3 stores the actual data, the Glue Data Catalog stores the “map/schema” of the data, and Glue ETL uses that map to process the data.
 {{% /notice %}}
 
-![DataBaseInDataCatalog](/images/Workshop/4.Glue/4.1.Crawler/create_database_data_catalog(10-11).png)
+![DataBaseInDataCatalog](/images/Workshop/4.Glue/4.1.Crawler/4.1.12.png)
 
 3. Click **Next** to review Crawlers Setup
-![ViewOutputScheduling](/images/Workshop/4.Glue/4.1.Crawler/next_step.png)
+![ViewOutputScheduling](/images/Workshop/4.Glue/4.1.Crawler/4.1.13.png)
 
 ###  Review and create
         
 1. Review all the settings and click **Create crawler**
 
-![ReviewAndCreate](/images/Workshop/4.Glue/4.1.Crawler/create_success_crawler.png)
+![ReviewAndCreate](/images/Workshop/4.Glue/4.1.Crawler/4.1.14.png)
 
