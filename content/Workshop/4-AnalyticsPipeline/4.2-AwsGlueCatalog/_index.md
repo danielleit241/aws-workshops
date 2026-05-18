@@ -91,10 +91,10 @@ Instead of manually defining the schema for each service, you can define it once
 
 The same Data Catalog table can be used by:
 
-- *** AWS Glue ETL Job ***  to transform data
-- *** Amazon Athena *** to query data using SQL
-- *** Amazon EMR *** to process large-scale data
-- *** Amazon Redshift Spectrum *** to query data directly from S3
+- **AWS Glue ETL Job**  to transform data
+- **Amazon Athena** to query data using SQL
+- **Amazon EMR** to process large-scale data
+- **Amazon Redshift Spectrum** to query data directly from S3
 This makes the data lake easier to manage and reduces duplicated configuration.
 
 
