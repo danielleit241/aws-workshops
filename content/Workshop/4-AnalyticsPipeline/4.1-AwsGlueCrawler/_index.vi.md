@@ -5,9 +5,10 @@ weight: 1
 chapter: false
 pre: " <b> 1. </b> "
 ---
+
 ### Tổng quan
 
-Trong phần này, chúng ta sẽ cấu hình **AWS Glue Crawler** để tự động quét dữ liệu từ Amazon S3, nhận diện lược đồ (schema) và tạo các bảng metadata trong **AWS Glue Data Catalog**.
+Trong phần này, chúng ta sẽ cấu hình **AWS Glue Crawler** để tự động quét dữ liệu từ Amazon S3, nhận diện schema và tạo các bảng metadata trong **AWS Glue Data Catalog**.
 
 Sau khi hoàn thành phần này, bạn sẽ có thể:
 
@@ -31,7 +32,7 @@ Dữ liệu thô được lưu trong **Amazon S3** ở định dạng Parquet. *
 
 Luồng xử lý rút gọn như sau:
 
-![workflow](/images/Workshop/4.Glue/4.1.Crawler/aws-glue-crawler-etl-flow.png)
+![workflow](/images/Workshop/4.Glue/4.1.Crawler/4.1.1.png)
 
 ### Các khái niệm chính
 
@@ -99,52 +100,53 @@ Bạn có thể thay đổi các tên này theo môi trường AWS của riêng 
 2. Ở thanh điều hướng bên trái, chọn **Crawlers**
 3. Chọn **Add crawler**
 
-![OpenCrawlers](/images/Workshop/4.Glue/4.1.Crawler/create_crawler.png)
+![OpenCrawlers](/images/Workshop/4.Glue/4.1.Crawler/4.1.2.png)
 
 **Bước 2: Chọn Data Source và Classifiers**
 
 1. Nhấn nút thêm data source
 
-![DataSrc](/images/Workshop/4.Glue/4.1.Crawler/add_data_src.png)
+![DataSrc](/images/Workshop/4.Glue/4.1.Crawler/4.1.3.png)
 
 2. Nhấn **Browse S3**
 
-![BrowseS3](/images/Workshop/4.Glue/4.1.Crawler/browse_pathS3.png)
+![BrowseS3](/images/Workshop/4.Glue/4.1.Crawler/4.1.4.png)
 
 3. Chọn S3 Bucket rồi nhấn nút **Choose**
 
-![ChooseBucket](/images/Workshop/4.Glue/4.1.Crawler/choose_s3_path.png)
+![ChooseBucket](/images/Workshop/4.Glue/4.1.Crawler/4.1.5.png)
 
 4. Nhấn nút **Add S3 Data Source** rồi chọn **Next**
+
+![AddDataSource](/images/Workshop/4.Glue/4.1.Crawler/4.1.16.png)
 
 **Bước 3: Cấu hình bảo mật**
 
 1. Nhấn nút **Create new IAM Role** và đặt tên
 
-![IAMrole](/images/Workshop/4.Glue/4.1.Crawler/create_iam_button.png)
+![IAMrole](/images/Workshop/4.Glue/4.1.Crawler/4.1.6.png)
 
-![IAMRole2](/images/Workshop/4.Glue/4.1.Crawler/set_name_iam_role.png)
+![IAMRole2](/images/Workshop/4.Glue/4.1.Crawler/4.1.7.png)
 
 2. Nhấn nút **View to configure role access** để cấp quyền đọc và ghi dữ liệu trong S3
 
-![ViewRole](/images/Workshop/4.Glue/4.1.Crawler/view_role.png)
+![ViewRole](/images/Workshop/4.Glue/4.1.Crawler/4.1.8.png)
 
 3. Nhấn vào tên **Permission policy** để chỉnh sửa
 
-![EditPolicy](/images/Workshop/4.Glue/4.1.Crawler/tick_button_permission.png)
+![EditPolicy](/images/Workshop/4.Glue/4.1.Crawler/4.1.9.png)
 
 4. Nhấn **Edit** để chỉnh quyền:
-
 - Trong phần Action, bạn cần bật quyền S3:GetObject và S3:PutObject để có quyền truy xuất dữ liệu từ S3.
-- Trong phần Resource, vì tệp Parquet của tôi có nhiều tệp con, tôi thêm `/*` để có thể đọc các tệp bên trong.
+- Trong phần Resource, vì tệp Parquet có nhiều tệp con, hãy thêm `/*` để có thể đọc các tệp bên trong.
 
-![EditPermission](/images/Workshop/4.Glue/4.1.Crawler/edit_permission.png)
+![EditPermission](/images/Workshop/4.Glue/4.1.Crawler/4.1.10.png)
 
 **Bước 4: Thiết lập đầu ra và lịch chạy**
 
 1. Nhấn nút **Add Database**
 
-![AddDB](/images/Workshop/4.Glue/4.1.Crawler/click_button_add_DB.png)
+![AddDB](/images/Workshop/4.Glue/4.1.Crawler/4.1.11.png)
 
 2. Tạo một Glue database chuẩn trong Data Catalog.
 
@@ -152,15 +154,14 @@ Bạn có thể thay đổi các tên này theo môi trường AWS của riêng 
 S3 lưu dữ liệu thực tế, Glue Data Catalog lưu "bản đồ/schema" của dữ liệu, và Glue ETL dùng bản đồ đó để xử lý dữ liệu.
 {{% /notice %}}
 
-![DataBaseInDataCatalog](/images/Workshop/4.Glue/4.1.Crawler/create_database_data_catalog(10-11).png)
+![DataBaseInDataCatalog](/images/Workshop/4.Glue/4.1.Crawler/4.1.12.png)
 
 3. Nhấn **Next** để xem lại cấu hình crawler
 
-![ViewOutputScheduling](/images/Workshop/4.Glue/4.1.Crawler/next_step.png)
+![ViewOutputScheduling](/images/Workshop/4.Glue/4.1.Crawler/4.1.13.png)
 
 ### Xem lại và tạo
 
 1. Xem lại toàn bộ cấu hình và nhấn **Create crawler**
 
-![ReviewAndCreate](/images/Workshop/4.Glue/4.1.Crawler/create_success_crawler.png)
-
+![ReviewAndCreate](/images/Workshop/4.Glue/4.1.Crawler/4.1.14.png)
