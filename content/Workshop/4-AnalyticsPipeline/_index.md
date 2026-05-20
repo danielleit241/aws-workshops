@@ -21,17 +21,6 @@ An **analytics pipeline** is a process that takes raw data, prepares it, transfo
 
 In this workshop, the pipeline follows this flow:
 
-```txt
-Amazon S3 Raw Data
-        ↓
-AWS Glue Crawler
-        ↓
-AWS Glue Data Catalog
-        ↓
-AWS Glue Visual ETL Job
-        ↓
-Amazon S3 Processed Data
-```
 The simplified architecture is shown below:
 
 ![Analytics Pipeline Overview](/images/Workshop/4.Glue/4.1.Crawler/aws-glue-crawler-etl-flow.png)
@@ -180,17 +169,7 @@ The ETL job can:
 The important point is that the ETL job uses the Data Catalog table to understand the source data.
 
 However, when the job runs, it still reads the actual Parquet files from Amazon S3.
-```txt
-Glue Data Catalog Table
-        ↓
-Glue ETL Job understands schema and S3 location
-        ↓
-Glue ETL Job reads actual files from S3
-        ↓
-Glue ETL Job transforms data
-        ↓
-Glue ETL Job writes processed data to S3
-```
+![Glue ETL Catalog Flow](/images/Workshop/4.Glue/4.1.Crawler/glue_etl_catalog_flow.png)
 
 ### How the Services Work Together
 

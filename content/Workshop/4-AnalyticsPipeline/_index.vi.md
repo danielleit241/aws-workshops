@@ -20,18 +20,6 @@ Trang này tập trung vào khái niệm và kiến trúc. Các bước cấu h�
 
 Trong workshop này, pipeline theo luồng sau:
 
-```txt
-Amazon S3 - Dữ liệu thô
-        ↓
-AWS Glue Crawler
-        ↓
-AWS Glue Data Catalog
-        ↓
-AWS Glue Visual ETL Job
-        ↓
-Amazon S3 - Dữ liệu đã xử lý
-```
-
 Kiến trúc rút gọn được minh họa bên dưới:
 
 ![Analytics Pipeline Overview](/images/Workshop/4.Glue/4.1.Crawler/aws-glue-crawler-etl-flow.png)
@@ -184,17 +172,7 @@ ETL job có thể:
 
 Tuy nhiên, khi job chạy, nó vẫn đọc các tệp Parquet thực tế từ Amazon S3.
 
-```txt
-Bảng trong Glue Data Catalog
-        ↓
-Glue ETL Job hiểu schema và vị trí S3
-        ↓
-Glue ETL Job đọc tệp thực tế từ S3
-        ↓
-Glue ETL Job chuyển đổi dữ liệu
-        ↓
-Glue ETL Job ghi dữ liệu đã xử lý vào S3
-```
+![Glue ETL Catalog Flow](/images/Workshop/4.Glue/4.1.Crawler/glue_etl_catalog_flow.png)
 
 ### Cách Các Dịch Vụ Phối Hợp Với Nhau
 
