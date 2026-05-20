@@ -207,8 +207,3 @@ In **Configure target input**, choose **Input transformer** -> click **Configure
 ### Done!
 
 Your Data Pipeline is now fully automated. As soon as you upload a data file to S3, Step Functions will automatically run the entire ETL workflow. At the same time, any errors that occur in the system chain will be collected and delivered neatly to your inbox.
-
----
-
-You can copy this content directly and insert the screenshots (from 3.4.1 to 3.4.13) to complete the Markdown file. Good luck to team **YOLO - You Only Live Once** on finishing this workshop documentation successfully!
-

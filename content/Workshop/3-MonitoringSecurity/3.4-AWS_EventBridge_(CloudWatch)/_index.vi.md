@@ -210,7 +210,3 @@ Tại mục **Configure target input**, chọn **Input transformer** -> Nhấn *
 
 Hệ thống Data Pipeline của bạn giờ đây đã hoàn toàn tự động hóa. Chỉ cần upload một file dữ liệu lên S3, Step Functions sẽ tự động chạy toàn bộ quy trình ETL. Đồng thời, bất kỳ lỗi nào xuất hiện trong chuỗi hệ thống đều sẽ được thu thập và báo cáo đẹp mắt về hòm thư của bạn.
 
----
-
-Bạn có thể copy thẳng khối nội dung này và chèn các screenshot (từ 3.4.1 đến 3.4.13) vào là file Markdown sẽ hoàn thiện. Chúc team **YOLO - You Only Live Once** hoàn thành xuất sắc tài liệu workshop này nhé!
-
