@@ -3,7 +3,7 @@ title: "Thiết lập Redshift Serverless"
 date: "2026-05-02"
 weight: 2
 chapter: false
-pre: " <b> 2. </b> "
+pre: " <b> 2.2. </b> "
 ---
 
 Để sử dụng Redshift Spectrum, chúng ta cần tạo một Redshift Serverless environment. Redshift Serverless là lựa chọn phù hợp cho việc query dữ liệu từ S3/Glue mà không cần quản lý infrastructure.

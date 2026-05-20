@@ -3,7 +3,7 @@ title: "Tạo External Schema cho Glue Data Catalog"
 date: "2026-05-02"
 weight: 4
 chapter: false
-pre: " <b> 4. </b> "
+pre: " <b> 2.4. </b> "
 ---
 
 Để truy vấn dữ liệu từ Glue Data Catalog thông qua Redshift Spectrum, chúng ta cần tạo external schema.

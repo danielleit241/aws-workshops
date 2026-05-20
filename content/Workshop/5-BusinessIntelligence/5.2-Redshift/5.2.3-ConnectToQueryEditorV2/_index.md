@@ -3,9 +3,8 @@ title: "Connect to Query Editor v2"
 date: "2026-05-02"
 weight: 3
 chapter: false
-pre: " <b> 3. </b> "
+pre: " <b> 2.3. </b> "
 ---
-
 1. From Redshift console, click "Query data"
 2. Select "Query editor v2"
 

@@ -3,7 +3,7 @@ title: "Query Glue Catalog with Redshift Spectrum"
 date: "2026-05-02"
 weight: 5
 chapter: false
-pre: " <b> 5. </b> "
+pre: " <b> 2.5. </b> "
 ---
 
 After the external schema is created and duplicate errors are fixed, we can query the data.

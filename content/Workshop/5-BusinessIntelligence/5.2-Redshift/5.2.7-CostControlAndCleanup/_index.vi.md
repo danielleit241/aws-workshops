@@ -3,7 +3,7 @@ title: "Kiểm soát chi phí và dọn dẹp"
 date: "2026-05-02"
 weight: 7
 chapter: false
-pre: " <b> 7. </b> "
+pre: " <b> 2.7. </b> "
 ---
 
 Redshift Serverless có $300 credit free trial trong 90 ngày cho tài khoản chưa từng dùng Redshift Serverless.
