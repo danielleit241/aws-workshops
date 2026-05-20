@@ -38,53 +38,15 @@ This means Athena does not replace AWS Glue. Instead:
 - **AWS Glue Data Catalog** stores the table definitions and schema
 - **Athena** reads both to execute SQL queries
 
-### What Athena Is Good For
+### What You Will Do in This Section
 
-Athena is commonly used for:
+In the hands-on steps that follow, you will:
 
-- Quick validation of ETL outputs
-- Ad-hoc SQL analysis on data lake files
-- Exploring data without building a data warehouse first
-- Checking record counts, distributions, and aggregates
-- Investigating partitions and filtered subsets of data
-
-For this workshop, Athena helps confirm that the processed taxi trip data is ready for analytics and can answer common business questions.
-
-### Example Questions Athena Can Answer
-
-With Athena, you can run SQL queries such as:
-
-- How many taxi trips exist in the processed dataset?
-- What is the average fare amount by payment type?
-- Which pickup dates generate the highest revenue?
-- How does trip distance vary across time periods?
-- What are the most common passenger count patterns?
-
-These are useful examples of **business-facing questions** that can be answered directly from the data lake.
-
-### Benefits of Using Athena
-
-| Benefit | Explanation |
-|---|---|
-| Serverless | No cluster or database instance is required |
-| SQL-based | Uses familiar query language for analysis |
-| Glue Integration | Reuses metadata from the Data Catalog |
-| S3-native | Queries data directly where it is stored |
-| Pay-per-query | Cost is based on data scanned rather than idle infrastructure |
-
-{{% notice tip %}}
-Athena works best when the source data is stored in efficient formats such as Parquet and organized with clear partitioning. That is one reason the earlier Glue pipeline design matters.
-{{% /notice %}}
-
-### Athena in Relation to Redshift and QuickSight
-
-Athena is not the final BI service in this workshop. It is the **entry point for querying**.
-
-- Use **Athena** when you want simple, direct, SQL-based access to S3 data
-- Use **Redshift Spectrum** when you need a broader warehouse analytics experience
-- Use **QuickSight** when you want dashboards instead of raw query results
-
-Together, these services demonstrate different ways to consume the same curated dataset.
+1. Prepare an S3 bucket for Athena query results
+2. Open Athena Query Editor and confirm the Glue catalog objects
+3. Run a validation query on the processed dataset
+4. Recover missing catalog metadata if needed
+5. Clean up temporary resources if they were created only for the lab
 
 ### Learning Outcome
 
@@ -93,4 +55,14 @@ After this section, you should understand:
 - What Amazon Athena does
 - Why it integrates naturally with AWS Glue and Amazon S3
 - How it supports ad-hoc analytics on the workshop dataset
-- Why it is an important first tool in the business intelligence layer
+- How to validate that the processed data is query-ready
+
+### Section Content
+
+1. [Prepare Athena Results](5.1.1-PrepareAthenaResults/)
+2. [Open Athena and Browse Catalog](5.1.2-OpenAthenaAndBrowseCatalog/)
+3. [Run Validation Queries](5.1.3-RunValidationQueries/)
+4. [Recover Missing Catalog](5.1.4-RecoverMissingCatalog/)
+5. [Cleanup](5.1.5-Cleanup/)
+
+By the end of this section, you will have a clean, step-by-step Athena flow without overwhelming a single page with too many screenshots.
