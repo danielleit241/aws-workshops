@@ -6,83 +6,73 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-Chào mừng bạn đến với workshop toàn diện về Redshift Spectrum trong dự án Manhattan DataWays. Bài hướng dẫn này trình bày cách tận dụng sức mạnh của Amazon Redshift Spectrum để chạy các truy vấn SQL phức tạp trực tiếp trên dữ liệu được lưu trữ trong Amazon S3, tích hợp liền mạch với AWS Glue Data Catalog.
+Trong phần này, chúng ta giới thiệu **Amazon Redshift Spectrum** như lựa chọn phân tích tiếp theo sau Athena để truy vấn dữ liệu đã được curate trong data lake.
 
-## Amazon Redshift Spectrum là gì?
+Amazon Redshift Spectrum mở rộng **Amazon Redshift** để các truy vấn SQL có thể truy cập trực tiếp dữ liệu lưu trong **Amazon S3**. Trong workshop này, Spectrum hoạt động cùng với **AWS Glue Data Catalog**, cho phép Redshift hiểu các external table mà không cần phải nạp toàn bộ dataset vào storage của data warehouse trước.
 
-Amazon Redshift Spectrum là tính năng xử lý truy vấn serverless mạnh mẽ của Amazon Redshift, cho phép bạn chạy SQL queries trực tiếp trên dữ liệu được lưu trữ trong Amazon S3. Khác với các phương pháp truyền thống yêu cầu load dữ liệu vào Redshift, Spectrum cho phép bạn truy vấn dữ liệu trực tiếp tại nơi lưu trữ, loại bỏ việc di chuyển và sao chép dữ liệu.
+### Vì Sao Redshift Spectrum Quan Trọng
 
-### Khả năng Chính
+Athena rất phù hợp cho việc khám phá dữ liệu nhanh theo mô hình serverless. Tuy nhiên, nhiều nhóm phân tích còn cần một môi trường theo hướng data warehouse hơn để hỗ trợ workflow SQL rộng hơn, công cụ truy vấn dùng chung, và tích hợp với các nền tảng BI phía sau.
 
-- **Truy vấn trực tiếp S3**: Thực hiện các truy vấn SQL tinh vi trên file Parquet, ORC và text trong S3
-- **Tự động scale serverless**: Tự động scale tài nguyên compute dựa trên độ phức tạp của truy vấn
-- **Tích hợp Glue**: Tận dụng AWS Glue Data Catalog để tự động khám phá schema
-- **Tối ưu chi phí**: Chỉ trả tiền cho thời gian compute sử dụng trong quá trình thực thi truy vấn
-- **Hiệu năng**: Xử lý song song trên hàng nghìn object S3 cùng lúc
-- **Khả năng mở rộng**: Xử lý dễ dàng data lake quy mô petabyte
+Redshift Spectrum giúp kết nối hai nhu cầu đó bằng cách kết hợp:
 
-### Cách Redshift Spectrum hoạt động
+- **Phân tích SQL theo phong cách data warehouse**
+- **Truy cập trực tiếp dữ liệu data lake trên S3**
+- **Tái sử dụng metadata từ AWS Glue Data Catalog**
+- **Khả năng tích hợp với các công cụ báo cáo và BI**
 
-Khi bạn submit một truy vấn sử dụng Spectrum:
+{{% notice info %}}
+Redshift Spectrum không thay thế Glue pipeline. Nó sử dụng dữ liệu đầu ra đã xử lý và metadata catalog được tạo ở các bước trước trong workshop.
+{{% /notice %}}
 
-1. **Phân tích truy vấn**: Redshift parse và tối ưu hóa SQL query của bạn
-2. **Tra cứu metadata**: Lấy schema bảng từ Glue Data Catalog
-3. **Lập kế hoạch thực thi**: Tạo kế hoạch tối ưu trên các object S3
-4. **Xử lý phân tán**: Khởi chạy các node Redshift Spectrum tạm thời để xử lý song song
-5. **Tổng hợp kết quả**: Kết hợp và trả về kết quả cho client của bạn
+### Redshift Spectrum Phù Hợp Với Workshop Này Như Thế Nào
 
-Kiến trúc này cho phép analytics trên dataset khổng lồ mà không có chi phí load dữ liệu.
+Sơ đồ dưới đây cho thấy Redshift Spectrum nằm ở đâu trong kiến trúc workshop và luồng truy vấn:
 
-## Lợi ích cho Phân tích Dữ liệu
+![Redshift Spectrum Workflow](/images/manhattan-dataways/redshift-spectrum/redshift_spectrum_workflow.png)
 
-### Ưu thế về Hiệu năng & Khả năng mở rộng
-- **Xử lý song song**: Truy vấn hàng nghìn file S3 cùng lúc
-- **Không di chuyển dữ liệu**: Loại bỏ bottleneck ETL cho analytics
-- **Quy mô petabyte**: Xử lý data lake với hàng tỷ object dễ dàng
-- **Tối ưu hóa truy vấn**: Pushdown predicate và partitioning tự động
+Điều đó có nghĩa là:
 
-### Tối ưu Chi phí
-- **Trả theo truy vấn**: Chỉ trả tiền cho tài nguyên compute trong quá trình thực thi
-- **Không chi phí lưu trữ**: Tận dụng đầu tư lưu trữ S3 hiện có
-- **Mô hình serverless**: Không chi phí cluster idle hoặc scale thủ công
+- **Amazon S3** vẫn là lớp lưu trữ dữ liệu
+- **AWS Glue Data Catalog** cung cấp schema và metadata của bảng
+- **Redshift Spectrum** truy vấn dữ liệu external thông qua giao diện SQL của Redshift
 
-### Lợi ích Vận hành
-- **Analytics thống nhất**: Interface SQL duy nhất trên data lake và warehouse
-- **Insights real-time**: Truy vấn dữ liệu mới nhất mà không chờ ETL
-- **Tích hợp BI**: Kết nối liền mạch với Tableau, QuickSight và các công cụ khác
-- **Data governance**: Duy trì security và access controls
+### Bạn Sẽ Làm Gì Trong Phần Này
 
-## Tích hợp với Manhattan DataWays
+Trong các bước thực hành tiếp theo, bạn sẽ:
 
-Dự án Manhattan DataWays cung cấp nền tảng hoàn hảo cho Redshift Spectrum:
+1. Xem các khái niệm cốt lõi của Redshift Spectrum
+2. Thiết lập **Amazon Redshift Serverless**
+3. Kết nối với **Query Editor v2**
+4. Tạo **external schema** liên kết với Glue Data Catalog
+5. Truy vấn các external table được Glue quản lý từ Redshift
+6. Xem các lỗi thường gặp, lưu ý về chi phí, và hướng dẫn cleanup
 
-![Kiến trúc Manhattan DataWays](/images/Proposal/diagram-architecture.jpg)
+### Lợi Ích Khi Sử Dụng Redshift Spectrum
 
-- **S3 Data Lake**: 48.7M bản ghi taxi đã xử lý trong định dạng Parquet tối ưu
-- **Glue ETL Pipeline**: Xử lý dữ liệu tự động và kiểm tra chất lượng
-- **Glue Data Catalog**: Metadata phong phú cho khám phá schema và tối ưu query
-- **Dữ liệu được partition**: Partition theo năm/tháng để pruning query hiệu quả
+| Lợi ích | Giải thích |
+|---|---|
+| External Querying | Truy vấn dữ liệu trên S3 mà không cần nạp hết vào bảng Redshift |
+| Glue Integration | Tái sử dụng schema đã được khám phá trong Data Catalog |
+| Familiar SQL Experience | Dùng công cụ truy vấn Redshift và workflow quen thuộc theo hướng warehouse |
+| Scalable Analytics | Hỗ trợ các workload phân tích lớn hơn trên dữ liệu đã được curate |
+| BI Readiness | Chuẩn bị pattern truy cập dữ liệu phù hợp với các công cụ báo cáo |
 
-## Spectrum vs Redshift Truyền thống
+### Redshift Spectrum So Với Athena
 
-| Tính năng | Redshift Truyền thống | Redshift Spectrum |
-|-----------|----------------------|-------------------|
-| Lưu trữ Dữ liệu | Storage Redshift local | Data lake S3 |
-| Cần ETL | Có | Không |
-| Latency truy vấn | Milliseconds | Seconds to minutes |
-| Khả năng mở rộng | Giới hạn cluster size | Virtually unlimited |
-| Mô hình chi phí | Theo giờ | Theo truy vấn |
-| Tươi mới dữ liệu | Load theo batch | Real-time |
+Athena và Redshift Spectrum đều có thể truy vấn dữ liệu trong Amazon S3, nhưng chúng thường phù hợp với các tình huống khác nhau:
 
-## Tổng quan Workshop
+- Dùng **Athena** khi bạn cần phân tích SQL ad-hoc, trực tiếp và gọn nhẹ
+- Dùng **Redshift Spectrum** khi bạn muốn workflow phân tích theo hướng warehouse hơn
+- Dùng **QuickSight** khi bạn muốn dashboard và trực quan hóa thay vì kết quả truy vấn thô
 
-Workshop thực hành này bao gồm:
+Ba dịch vụ này cùng cho thấy một dataset đã được curate có thể được khai thác theo nhiều mô hình tiêu thụ dữ liệu khác nhau.
 
-1. **Cơ bản Redshift Serverless**: Hiểu về namespaces và workgroups
-2. **Thiết lập Spectrum**: Tạo external schemas và kết nối với Glue Catalog
-3. **Kỹ thuật truy vấn**: Viết truy vấn Spectrum hiệu quả với partitioning
-4. **Tuning hiệu năng**: Chiến lược tối ưu cho analytics quy mô lớn
-5. **Quản lý chi phí**: Giám sát và kiểm soát chi phí Spectrum
-6. **Tính năng nâng cao**: Truy vấn phức tạp và pattern tích hợp
+### Kết Quả Học Tập
 
-Sau khi hoàn thành workshop này, bạn sẽ thành thạo Redshift Spectrum và có thể áp dụng để khai phá tiềm năng đầy đủ của data lake cho analytics và business intelligence.
+Sau khi hoàn thành phần này, bạn nên hiểu:
+
+- Amazon Redshift Spectrum là gì
+- Redshift Spectrum tích hợp với Amazon S3 và AWS Glue Data Catalog như thế nào
+- Vì sao Redshift Spectrum bổ sung tốt cho Athena trong lớp BI
+- Amazon Redshift Serverless có thể được dùng ra sao để truy vấn dữ liệu đầu ra từ data lake
