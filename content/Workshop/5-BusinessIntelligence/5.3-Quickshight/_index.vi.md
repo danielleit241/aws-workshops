@@ -57,7 +57,7 @@ Sign up for QuickSight
 
 Ở bước này hệ thống sẽ hiển thị giao diện tạo tài khoản QuickSight lần đầu.
 
-![Đăng ký QuickSight](/images/Workshop/5.3%20Quicksight/5.3.1.jpg)
+![Đăng ký QuickSight](/images/Workshop/5.3%20Quicksight/5.3.1.0.jpg)
 
 ---
 
@@ -74,7 +74,7 @@ Hệ thống sẽ hoàn tất quá trình khởi tạo Amazon QuickSight.
 
 Tại đây người dùng sẽ được chuyển tới giao diện quản trị chính của QuickSight.
 
-![Kết quả tạo tài khoản](/images/Workshop/5.3%20Quicksight/5.3.2.jpg)
+![Kết quả tạo tài khoản](/images/Workshop/5.3%20Quicksight/5.3.2.0.jpg)
 
 ---
 
@@ -112,7 +112,7 @@ Username: admin
 Password: ********
 ```
 
-![Nhập thông tin kết nối](/images/Workshop/5.3%20Quicksight/5.3.3.jpg)
+![Nhập thông tin kết nối](/images/Workshop/5.3%20Quicksight/5.3.3.0.jpg)
 
 ---
 
@@ -135,7 +135,7 @@ Create data source
 
 để tạo Data Source cho QuickSight.
 
-![Tạo Data Source](/images/Workshop/5.3%20Quicksight/5.3.4.jpg)
+![Tạo Data Source](/images/Workshop/5.3%20Quicksight/5.3.4.0.jpg)
 
 ---
 
@@ -164,7 +164,7 @@ Ví dụ:
 yellow_taxi_trip
 ```
 
-![Nhập thông tin kết nối](/images/Workshop/5.3%20Quicksight/5.3.5.jpg)
+![Nhập thông tin kết nối](/images/Workshop/5.3%20Quicksight/5.3.5.0.jpg)
 
 ---
 
@@ -181,7 +181,7 @@ Select
 2. QuickSight sẽ tạo dataset từ bảng dữ liệu trong Redshift.
 3. Dataset này sẽ được sử dụng để tạo visualization và dashboard.
 
-![Xác nhận tạo dataset](/images/Workshop/5.3%20Quicksight/5.3.6.jpg)
+![Xác nhận tạo dataset](/images/Workshop/5.3%20Quicksight/5.3.6.0.jpg)
 
 ---
 
@@ -220,7 +220,7 @@ Ví dụ:
 
 để tạo biểu đồ doanh thu theo hình thức thanh toán.
 
-![Chọn bảng](/images/Workshop/5.3%20Quicksight/5.3.7.jpg)
+![Chọn bảng](/images/Workshop/5.3%20Quicksight/5.3.7.0.jpg)
 
 ---
 
@@ -237,7 +237,7 @@ Ví dụ:
 
 được sử dụng để xây dựng biểu đồ phân tích dữ liệu taxi trip.
 
-![Xác nhận bảng dữ liệu](/images/Workshop/5.3%20Quicksight/5.3.8.jpg)
+![Xác nhận bảng dữ liệu](/images/Workshop/5.3%20Quicksight/5.3.8.0.jpg)
 
 ---
 
@@ -259,7 +259,7 @@ Một số loại chart phổ biến:
 * Area Chart
 * Heatmap
 
-![Cấu hình Visualize](/images/Workshop/5.3%20Quicksight/5.3.9.jpg)
+![Cấu hình Visualize](/images/Workshop/5.3%20Quicksight/5.3.9.0.jpg)
 
 ---
 
@@ -276,7 +276,7 @@ Dashboard có thể hỗ trợ:
 * Thống kê trip distance.
 * Theo dõi payment type.
 
-![Hoàn thành tạo biểu đồ](/images/Workshop/5.3%20Quicksight/5.3.10.jpg)
+![Hoàn thành tạo biểu đồ](/images/Workshop/5.3%20Quicksight/5.3.10.0.jpg)
 
 ---
 
