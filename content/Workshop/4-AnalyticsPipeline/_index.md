@@ -23,7 +23,7 @@ In this workshop, the pipeline follows this flow:
 
 The simplified architecture is shown below:
 
-![Analytics Pipeline Overview](/images/Workshop/4.Glue/4.1.Crawler/aws-glue-crawler-etl-flow.png)
+![Analytics Pipeline Overview](/images/Workshop/4.Glue/4.1.Crawler/4.1.1.png)
 
 
 At a high level:
