@@ -36,8 +36,6 @@ Một workgroup là phần compute dùng để chạy truy vấn:
 
 Hai phần này được tách riêng để có thể quản lý lưu trữ và compute một cách độc lập.
 
-![Redshift Serverless Architecture](/images/Workshop/5.2-Redshift/1-Overview/1-Architecture/redshift_serverless_architecture.png)
-
 # Capacity và RPU
 
 ## RPU là gì?
