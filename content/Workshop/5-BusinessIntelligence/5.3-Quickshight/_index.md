@@ -58,7 +58,7 @@ Sign up for QuickSight
 
 At this stage, the system will display the initial QuickSight account creation interface.
 
-![Register QuickSight](/images/Workshop/5.3%20Quicksight/5.3.1.jpg)
+![Register QuickSight](/images/Workshop/5.3%20Quicksight/5.3.1.0.jpg)
 
 ---
 
@@ -75,7 +75,7 @@ the QuickSight account setup process will be completed successfully.
 
 The user will then be redirected to the QuickSight management dashboard.
 
-![QuickSight Account Created](/images/Workshop/5.3%20Quicksight/5.3.2.jpg)
+![QuickSight Account Created](/images/Workshop/5.3%20Quicksight/5.3.2.0.jpg)
 
 ---
 
@@ -117,7 +117,7 @@ Username: admin
 Password: ********
 ```
 
-![Enter Connection Information](/images/Workshop/5.3%20Quicksight/5.3.3.jpg)
+![Enter Connection Information](/images/Workshop/5.3%20Quicksight/5.3.3.0.jpg)
 
 ---
 
@@ -140,7 +140,7 @@ Create data source
 
 to create the Redshift Data Source.
 
-![Create Data Source](/images/Workshop/5.3%20Quicksight/5.3.4.jpg)
+![Create Data Source](/images/Workshop/5.3%20Quicksight/5.3.4.0.jpg)
 
 ---
 
@@ -169,7 +169,7 @@ Example:
 yellow_taxi_trip
 ```
 
-![Select Table](/images/Workshop/5.3%20Quicksight/5.3.5.jpg)
+![Select Table](/images/Workshop/5.3%20Quicksight/5.3.5.0.jpg)
 
 ---
 
@@ -186,7 +186,7 @@ Select
 2. QuickSight will create a dataset from the selected Redshift table.
 3. This dataset will be used for visualization and dashboard creation.
 
-![Confirm Dataset](/images/Workshop/5.3%20Quicksight/5.3.6.jpg)
+![Confirm Dataset](/images/Workshop/5.3%20Quicksight/5.3.6.0.jpg)
 
 ---
 
@@ -225,7 +225,7 @@ Example:
 
 This creates a revenue analysis chart based on payment methods.
 
-![Create Visualization](/images/Workshop/5.3%20Quicksight/5.3.7.jpg)
+![Create Visualization](/images/Workshop/5.3%20Quicksight/5.3.7.0.jpg)
 
 ---
 
@@ -242,7 +242,7 @@ Examples of fields used:
 
 These fields can be combined to analyze taxi trip data and business metrics.
 
-![Field Combination](/images/Workshop/5.3%20Quicksight/5.3.8.jpg)
+![Field Combination](/images/Workshop/5.3%20Quicksight/5.3.8.0.jpg)
 
 ---
 
@@ -264,7 +264,7 @@ Common chart types include:
 * Area Chart
 * Heatmap
 
-![Visualize Dashboard](/images/Workshop/5.3%20Quicksight/5.3.9.jpg)
+![Visualize Dashboard](/images/Workshop/5.3%20Quicksight/5.3.9.0.jpg)
 
 ---
 
@@ -281,7 +281,7 @@ The dashboard can support:
 * Trip distance analysis
 * Payment type statistics
 
-![Final Dashboard](/images/Workshop/5.3%20Quicksight/5.3.10.jpg)
+![Final Dashboard](/images/Workshop/5.3%20Quicksight/5.3.10.0.jpg)
 
 ---
 
