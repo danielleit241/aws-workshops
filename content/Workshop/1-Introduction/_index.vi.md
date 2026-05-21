@@ -5,21 +5,48 @@ weight: 1
 chapter: false
 pre: " <b> 1. </b> "
 ---
+Workshop này sẽ sử dụng các AWS resources và công cụ sau:
 
-### Workshop này sẽ sử dụng các AWS resources và công cụ sau:
+**Amazon S3:**  
+Amazon Simple Storage Service (S3) được sử dụng làm nền tảng Data Lake cho toàn bộ hệ thống. S3 lưu trữ dữ liệu Yellow Taxi ở nhiều giai đoạn khác nhau bao gồm dữ liệu thô (Raw Data), dữ liệu đã xử lý (Processed Data), và dữ liệu lỗi hoặc bất thường (Quarantine Data). Ngoài ra, S3 còn đóng vai trò là nguồn dữ liệu cho Athena, Redshift và Glue ETL Job.
 
-- **Amazon S3**: Amazon Simple Storage Service (S3) cung cấp khả năng lưu trữ đối tượng có thể mở rộng cho dữ liệu, file xuất ra, và các tài nguyên sử dụng trong toàn bộ workshop. Đây là nền tảng để lưu trữ dữ liệu đầu vào và các file trung gian một cách bền vững và có tính sẵn sàng cao.
+**AWS Step Functions:**  
+AWS Step Functions được sử dụng để điều phối toàn bộ workflow xử lý dữ liệu. Dịch vụ này giúp tổ chức các bước ETL theo dạng State Machine, đảm bảo pipeline có thể chạy tuần tự, dễ theo dõi và dễ mở rộng khi hệ thống phát triển thêm các bước xử lý mới.
 
-- **EventBridge và Step Functions**: Amazon EventBridge giúp định tuyến sự kiện giữa các dịch vụ AWS, trong khi AWS Step Functions cho phép bạn điều phối các workflow nhiều bước một cách trực quan và đáng tin cậy. Kết hợp lại, chúng giúp tự động hóa toàn bộ luồng xử lý theo sự kiện trong giải pháp.
+**AWS Glue Crawler và AWS Glue Data Catalog:**  
+AWS Glue Crawler được sử dụng để tự động quét dữ liệu trong Amazon S3 nhằm phát hiện schema và metadata của dataset. Metadata sau đó được lưu vào AWS Glue Data Catalog để phục vụ cho ETL processing và các dịch vụ truy vấn dữ liệu như Amazon Athena.
 
-- **AWS Lambda**: AWS Lambda chạy mã mà không cần provision hay quản lý máy chủ. Trong workshop này, Lambda có thể được dùng để xử lý sự kiện, chuyển đổi dữ liệu, và kết nối các dịch vụ bằng các hàm serverless nhẹ.
+**AWS Glue ETL Job:**  
+AWS Glue ETL Job sử dụng Apache Spark và PySpark Script để xử lý dữ liệu quy mô lớn. Pipeline ETL sẽ thực hiện:
+- Data Cleaning
+- Missing Value Handling
+- Financial Data Standardization
+- Feature Engineering
+- Rule-based Data Validation
+- Partition-based Data Processing
 
-- **AWS Glue DataBrew**: AWS Glue DataBrew là công cụ chuẩn bị dữ liệu trực quan giúp làm sạch và chuẩn hóa dữ liệu mà không cần viết code. Công cụ này rất hữu ích để phân tích sơ bộ và xử lý dữ liệu thô trước khi đưa vào các dịch vụ phân tích phía sau.
+Dữ liệu sau xử lý sẽ được ghi trở lại Amazon S3 dưới định dạng Parquet.
 
-- **Amazon Redshift**: Amazon Redshift là dịch vụ data warehouse được quản lý toàn phần, được thiết kế cho phân tích dữ liệu quy mô lớn. Nó cho phép truy vấn nhanh trên dữ liệu có cấu trúc và hỗ trợ các workload business intelligence.
+**Amazon Athena:**  
+Amazon Athena được sử dụng để truy vấn trực tiếp dữ liệu đã xử lý trên Amazon S3 bằng SQL tiêu chuẩn mà không cần xây dựng hạ tầng riêng. Athena hỗ trợ exploratory analysis và ad-hoc query trên các dataset partitioned trong Data Lake.
 
-- **Amazon Athena**: Amazon Athena là dịch vụ truy vấn tương tác cho phép phân tích dữ liệu lưu trong Amazon S3 bằng SQL tiêu chuẩn. Đây là lựa chọn rất phù hợp để khám phá dữ liệu nhanh mà không cần thiết lập hạ tầng.
+**Amazon Redshift:**  
+Amazon Redshift đóng vai trò là Data Warehouse phục vụ OLAP và analytical workloads. Dữ liệu đã xử lý từ S3 sẽ được load vào Redshift để tối ưu hiệu năng truy vấn và phục vụ các dashboard business intelligence.
 
-- **Amazon QuickSight**: Amazon QuickSight là dịch vụ business intelligence trên cloud dùng để tạo dashboard và biểu đồ trực quan. Nó giúp trình bày kết quả phân tích ở định dạng dễ hiểu cho người dùng kinh doanh và các bên liên quan.
+**Amazon QuickSight:**  
+Amazon QuickSight là dịch vụ business intelligence trên cloud được sử dụng để trực quan hóa dữ liệu thông qua dashboard và biểu đồ phân tích. QuickSight kết nối với Redshift để hiển thị:
+- Trip Demand Analysis
+- Revenue Analysis
+- Vendor Performance
+- Spatial Analysis
 
-- **IAM, CloudTrail, CloudWatch, và SNS**: AWS Identity and Access Management (IAM) kiểm soát quyền truy cập vào tài nguyên AWS, AWS CloudTrail ghi lại hoạt động tài khoản phục vụ kiểm toán, Amazon CloudWatch giám sát log và metrics, còn Amazon SNS gửi thông báo để bạn luôn được cập nhật về các sự kiện quan trọng.
+**IAM, CloudTrail, CloudWatch và SNS:**  
+AWS Identity and Access Management (IAM) được sử dụng để kiểm soát quyền truy cập giữa các dịch vụ AWS trong hệ thống.
+
+AWS CloudTrail ghi lại toàn bộ hoạt động API và thao tác trên tài nguyên AWS nhằm phục vụ audit và security tracking.
+
+Amazon CloudWatch được sử dụng để giám sát ETL Jobs, Glue Logs và trạng thái workflow.
+
+Amazon SNS hỗ trợ gửi cảnh báo khi pipeline thất bại hoặc phát sinh lỗi trong quá trình xử lý dữ liệu.
+
+> **Lưu ý:** Việc sử dụng Amazon EventBridge kết hợp với CloudWatch là tùy chọn (optional). Nếu hệ thống không yêu cầu cơ chế event-driven hoặc event routing phức tạp, CloudWatch vẫn có thể được sử dụng độc lập để monitoring, logging và alerting như thông thường.
