@@ -61,7 +61,7 @@ Giải pháp kỹ thuật (Technical Solution): Triển khai kiến trúc Data L
 
 ### Kiến trúc giải pháp (Solution Architecture)
 
-![overview](/images/Proposal/diagram-architecture.jpg)
+![overview](/images/Workshop/Architecture/Architecutre_final.png)
 
 Kiến trúc hệ thống đi theo luồng xử lý:
 

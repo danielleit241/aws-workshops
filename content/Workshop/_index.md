@@ -63,7 +63,7 @@ The system implements a Data Lakehouse architecture on AWS:
 
 ### Solution Architecture
 
-![overview](/images/Proposal/diagram-architecture.jpg)
+![overview](/images/Workshop/Architecture/Architecutre_final.png)
 
 The system architecture follows the processing flow:
 
