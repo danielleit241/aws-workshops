@@ -6,13 +6,13 @@ chapter: false
 pre: " <b> 2.6. </b> "
 ---
 
-![Wrong path vs correct Spectrum path](/images/manhattan-dataways/redshift-spectrum/spectrum_query_paths.png)
+![Wrong path vs correct Spectrum path](/images/Workshop/5.2-Redshift/6-CommonMistakes/1-PathIssues/spectrum_query_paths.png)
 
 ## Mistake 1: Using "Load data" Instead of External Schema
 
 When first entering Query Editor v2, you might mistakenly click "Load data" to import data into Redshift native tables.
 
-![Load data - wrong path](/images/manhattan-dataways/redshift-spectrum/08-load-data-wrong-path.png)
+![Load data - wrong path](/images/Workshop/5.2-Redshift/6-CommonMistakes/1-PathIssues/load-data-wrong-path.png)
 
 ### Why Wrong?
 
@@ -36,7 +36,7 @@ Initially, you might create external schema pointing to craw_data_catalog (raw d
 SELECT schemaname, tablename FROM svv_external_tables WHERE schemaname = 'taxi_raw';
 ```
 
-![No external tables](/images/manhattan-dataways/redshift-spectrum/09-no-external-tables.png)
+![No external tables](/images/Workshop/5.2-Redshift/6-CommonMistakes/2-MetadataIssues/no-external-tables.png)
 
 ### Fix
 

@@ -6,13 +6,13 @@ chapter: false
 pre: " <b> 2.6. </b> "
 ---
 
-![Đường dẫn sai và đúng với Spectrum](/images/manhattan-dataways/redshift-spectrum/spectrum_query_paths.png)
+![Đường dẫn sai và đúng với Spectrum](/images/Workshop/5.2-Redshift/6-CommonMistakes/1-PathIssues/spectrum_query_paths.png)
 
 ## Sai lầm 1: Sử dụng "Load data" thay vì External Schema
 
 Khi mới vào Query Editor v2, có thể nhầm click "Load data" để import data vào Redshift native table.
 
-![Load data - đường dẫn sai](/images/manhattan-dataways/redshift-spectrum/08-load-data-wrong-path.png)
+![Load data - đường dẫn sai](/images/Workshop/5.2-Redshift/6-CommonMistakes/1-PathIssues/load-data-wrong-path.png)
 
 ### Tại sao sai?
 
@@ -36,7 +36,7 @@ Ban đầu có thể tạo external schema trỏ vào craw_data_catalog (raw dat
 SELECT schemaname, tablename FROM svv_external_tables WHERE schemaname = 'taxi_raw';
 ```
 
-![Không có external tables](/images/manhattan-dataways/redshift-spectrum/09-no-external-tables.png)
+![Không có external tables](/images/Workshop/5.2-Redshift/6-CommonMistakes/2-MetadataIssues/no-external-tables.png)
 
 ### Khắc phục
 

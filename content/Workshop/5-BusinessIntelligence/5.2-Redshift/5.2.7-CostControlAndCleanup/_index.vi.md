@@ -11,8 +11,8 @@ Redshift Serverless có $300 credit free trial trong 90 ngày cho tài khoản c
 - Credit này riêng biệt với AWS Free Tier $200
 - Áp dụng cho compute usage (RPU-hours)
 - Tự động hết sau 90 ngày hoặc khi dùng hết $300
-![Redshift Serverless free trial](/images/manhattan-dataways/redshift-spectrum/06-query-editor-v2-connected.png)
-![Redshift Serverless free trial](/images/manhattan-dataways/redshift-spectrum/14-redshift-freetrial.png)
+![Redshift Serverless free trial](/images/Workshop/5.2-Redshift/3-QueryEditorV2/1-Connect/query-editor-v2-connected.png)
+![Redshift Serverless free trial](/images/Workshop/5.2-Redshift/7-CostControl/1-FreeTrial/redshift-freetrial.png)
 
 # Kiểm soát chi phí
 

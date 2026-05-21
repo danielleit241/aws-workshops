@@ -29,7 +29,7 @@ Redshift Spectrum does not replace the Glue pipeline. It consumes the processed 
 
 The following diagram shows how Redshift Spectrum fits into the workshop architecture and query flow:
 
-![Redshift Spectrum Workflow](/images/manhattan-dataways/redshift-spectrum/redshift_spectrum_workflow.png)
+![Redshift Spectrum Workflow](/images/Workshop/5.2-Redshift/1-Overview/3-Flows/redshift_spectrum_workflow.png)
 
 This means:
 

@@ -13,7 +13,7 @@ pre: " <b> 2.2. </b> "
 1. Vào Amazon Redshift console
 2. Ở dashboard, chúng ta sẽ thấy không có namespace/workgroup nào
 
-![Redshift Serverless Dashboard](/images/manhattan-dataways/redshift-spectrum/01-existing-glue-stack-overview.png)
+![Redshift Serverless Dashboard](/images/Workshop/5.2-Redshift/2-Creation/0-Precheck/existing-glue-stack-overview.png)
 
 3. Click "Create workgroup"
 
@@ -21,7 +21,7 @@ pre: " <b> 2.2. </b> "
 
 Trong màn hình "Get started with Amazon Redshift Serverless", click "Customize settings" để cấu hình chi tiết thay vì dùng mặc định.
 
-![Màn hình Get started với tùy chỉnh](/images/manhattan-dataways/redshift-spectrum/02-redshift-get-started-customize.png)
+![Màn hình Get started với tùy chỉnh](/images/Workshop/5.2-Redshift/2-Creation/0-Precheck/redshift-get-started-customize.png)
 
 ### Cấu hình Namespace
 
@@ -37,7 +37,7 @@ Trong màn hình "Get started with Amazon Redshift Serverless", click "Customize
 
 Giảm Base capacity từ 128 xuống 4 RPU để tiết kiệm chi phí cho hand-on.
 
-![Giảm capacity từ 128 xuống 4](/images/manhattan-dataways/redshift-spectrum/03-redshift-capacity-128-to-4.png)
+![Giảm capacity từ 128 xuống 4](/images/Workshop/5.2-Redshift/2-Creation/0-Precheck/redshift-capacity-128-to-4.png)
 
 ### IAM Role
 
@@ -47,7 +47,7 @@ Tạo IAM role mới để Redshift có quyền đọc S3 và Glue:
 2. Chọn buckets: yellow-taxi-trip-demo-fcaj, processed-yellow-taxi-trip-data, quarantine-yellow-taxi-trip-data
 3. Set default role
 
-![Workgroup và IAM role](/images/manhattan-dataways/redshift-spectrum/04-redshift-workgroup-iam-default.png)
+![Workgroup và IAM role](/images/Workshop/5.2-Redshift/2-Creation/0-Precheck/redshift-workgroup-iam-default.png)
 
 ### Network and Security
 
@@ -61,7 +61,7 @@ Click "Save configuration". AWS sẽ tạo namespace và workgroup.
 
 Chờ đến khi workgroup status chuyển thành "Available".
 
-![Workgroup đã available](/images/manhattan-dataways/redshift-spectrum/05-redshift-workgroup-available.png)
+![Workgroup đã available](/images/Workshop/5.2-Redshift/2-Creation/4-PostCreate/redshift-workgroup-available.png)
 
 ## Lý do cấu hình này
 

@@ -12,7 +12,7 @@ To query data from Glue Data Catalog through Redshift Spectrum, we need to creat
 
 Since our goal is to query processed data, we create a schema pointing to the processed database.
 
-![Schema for processed data](/images/manhattan-dataways/redshift-spectrum/19-schema-processed-data.png)
+![Schema for processed data](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/schema-processed-data.png)
 
 First, we need to create a Glue Crawler for the processed S3 bucket.
 
@@ -23,7 +23,7 @@ First, we need to create a Glue Crawler for the processed S3 bucket.
 3. Attach policies: AWSGlueServiceRole, AmazonS3ReadOnlyAccess
 4. Role name: glue-role-manhattan-processed-crawler
 
-![Create IAM role](/images/manhattan-dataways/redshift-spectrum/18-create-iam-role.png)
+![Create IAM role](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/create-iam-role.png)
 
 ### Create Glue Crawler
 
@@ -35,9 +35,9 @@ First, we need to create a Glue Crawler for the processed S3 bucket.
    - Target database: redshift_database (create new)
 3. Run crawler
 
-![Create Glue crawler](/images/manhattan-dataways/redshift-spectrum/20-create-glue-crawler.png)
+![Create Glue crawler](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/create-glue-crawler.png)
 
-![Crawler succeeded](/images/manhattan-dataways/redshift-spectrum/10-crawler-succeeded.png)
+![Crawler succeeded](/images/Workshop/5.2-Redshift/4-ExternalSchema/3-Troubleshooting/crawler-succeeded.png)
 
 ### Create External Schema in Redshift
 
@@ -49,9 +49,9 @@ IAM_ROLE 'arn:aws:iam::878796852481:role/service-role/AmazonRedshift-CommandsAcc
 REGION 'us-east-2';
 ```
 
-![Create external schema](/images/manhattan-dataways/redshift-spectrum/16-create-external-schema.png)
+![Create external schema](/images/Workshop/5.2-Redshift/4-ExternalSchema/2-SchemaCreation/create-external-schema.png)
 
-![External Schema Creation Flow](/images/manhattan-dataways/redshift-spectrum/external_schema_flow.png)
+![External Schema Creation Flow](/images/Workshop/5.2-Redshift/4-ExternalSchema/2-SchemaCreation/external_schema_flow.png)
 
 Check tables:
 
@@ -61,7 +61,7 @@ FROM svv_external_tables
 WHERE schemaname = 'taxi_processed';
 ```
 
-![Check tables](/images/manhattan-dataways/redshift-spectrum/17-check-tables.png)
+![Check tables](/images/Workshop/5.2-Redshift/4-ExternalSchema/2-SchemaCreation/check-tables.png)
 
 ## Fix Duplicate Columns Error
 
@@ -71,6 +71,6 @@ Go to Glue console → Tables → processed_yellow_taxi_trip_data → Edit schem
 
 Remove year and month from normal columns, keep them in Partition keys.
 
-![Fix duplicate columns](/images/manhattan-dataways/redshift-spectrum/11-glue-schema-edit-duplicate.png)
+![Fix duplicate columns](/images/Workshop/5.2-Redshift/4-ExternalSchema/3-Troubleshooting/glue-schema-edit-duplicate.png)
 
 Then refresh Redshift metadata and query again.

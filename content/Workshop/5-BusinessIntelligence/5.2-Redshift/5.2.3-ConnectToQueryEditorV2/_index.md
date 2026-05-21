@@ -16,7 +16,7 @@ In Query Editor v2:
 2. Database: dev
 3. Authentication: Federated user (using IAM credentials)
 
-![Connect to workgroup](/images/manhattan-dataways/redshift-spectrum/15-connect-to-workgroup.png)
+![Connect to workgroup](/images/Workshop/5.2-Redshift/3-QueryEditorV2/1-Connect/connect-to-workgroup.png)
 
 # Verify Connection
 
@@ -28,7 +28,7 @@ SELECT current_database();
 
 Expected result: dev
 
-![Current database result](/images/manhattan-dataways/redshift-spectrum/07-current-database-dev.png)
+![Current database result](/images/Workshop/5.2-Redshift/3-QueryEditorV2/2-Validation/current-database-dev.png)
 
 Also run:
 

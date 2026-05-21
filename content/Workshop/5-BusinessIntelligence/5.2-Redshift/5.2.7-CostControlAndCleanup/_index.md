@@ -11,8 +11,8 @@ Redshift Serverless has $300 free trial credit for 90 days for accounts that hav
 - This credit is separate from AWS Free Tier $200
 - Applies to compute usage (RPU-hours)
 - Automatically expires after 90 days or when $300 is used up
-![Redshift Serverless free trial](/images/manhattan-dataways/redshift-spectrum/06-query-editor-v2-connected.png)
-![Redshift Serverless free trial](/images/manhattan-dataways/redshift-spectrum/14-redshift-freetrial.png)
+![Redshift Serverless free trial](/images/Workshop/5.2-Redshift/3-QueryEditorV2/1-Connect/query-editor-v2-connected.png)
+![Redshift Serverless free trial](/images/Workshop/5.2-Redshift/7-CostControl/1-FreeTrial/redshift-freetrial.png)
 
 # Cost Control
 

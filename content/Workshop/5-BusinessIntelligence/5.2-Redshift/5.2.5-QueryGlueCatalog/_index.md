@@ -16,7 +16,7 @@ FROM taxi_processed.processed_yellow_taxi_trip_data
 LIMIT 30;
 ```
 
-![Query limit 30](/images/manhattan-dataways/redshift-spectrum/12-final-query-limit-30.png)
+![Query limit 30](/images/Workshop/5.2-Redshift/5-QueryGlueCatalog/1-RunQueries/final-query-limit-30.png)
 
 ## Query by Partition
 
@@ -49,6 +49,6 @@ GROUP BY year, month, payment_type
 ORDER BY year, month, payment_type;
 ```
 
-![Query results](/images/manhattan-dataways/redshift-spectrum/13-query-results.png)
+![Query results](/images/Workshop/5.2-Redshift/5-QueryGlueCatalog/1-RunQueries/query-results.png)
 
 Redshift Spectrum allows direct queries of Parquet data from S3 through Glue metadata without loading data into Redshift native tables.

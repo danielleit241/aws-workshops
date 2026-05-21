@@ -17,7 +17,7 @@ Trong Query Editor v2:
 2. Database: dev
 3. Authentication: Federated user (sử dụng IAM credentials)
 
-![Connect to workgroup](/images/manhattan-dataways/redshift-spectrum/15-connect-to-workgroup.png)
+![Connect to workgroup](/images/Workshop/5.2-Redshift/3-QueryEditorV2/1-Connect/connect-to-workgroup.png)
 
 # Xác nhận kết nối
 
@@ -29,7 +29,7 @@ SELECT current_database();
 
 Kết quả mong đợi: dev
 
-![Kết quả current_database](/images/manhattan-dataways/redshift-spectrum/07-current-database-dev.png)
+![Kết quả current_database](/images/Workshop/5.2-Redshift/3-QueryEditorV2/2-Validation/current-database-dev.png)
 
 Chạy thêm:
 

@@ -29,7 +29,7 @@ Redshift Spectrum không thay thế Glue pipeline. Nó sử dụng dữ liệu �
 
 Sơ đồ dưới đây cho thấy Redshift Spectrum nằm ở đâu trong kiến trúc workshop và luồng truy vấn:
 
-![Redshift Spectrum Workflow](/images/manhattan-dataways/redshift-spectrum/redshift_spectrum_workflow.png)
+![Redshift Spectrum Workflow](/images/Workshop/5.2-Redshift/1-Overview/3-Flows/redshift_spectrum_workflow.png)
 
 Điều đó có nghĩa là:
 
