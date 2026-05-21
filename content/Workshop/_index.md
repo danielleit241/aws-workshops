@@ -12,7 +12,7 @@ In this workshop, we will build an automated data analytics pipeline on AWS for 
 
 After the data is curated, it will be stored in a processed S3 layer and loaded into Amazon Redshift for OLAP workloads, while Amazon Athena will support fast ad-hoc SQL queries directly on S3. Finally, Amazon QuickSight will be used to build interactive dashboards for business insights, and IAM, CloudTrail, CloudWatch, and SNS will provide security, auditing, monitoring, and alerting throughout the workflow.
 
-![Architecture](/images/Proposal/diagram-architecture.jpg)
+![Architecture](/images/Workshop/Architecture/Architecutre_final.png)
 
 ## Content
 
