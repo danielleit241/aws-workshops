@@ -1,10 +1,11 @@
 ---
-title: "Set up Data Pipeline Error Alerts with Amazon EventBridge (CloudWatch)"
+title: "Set up Data Pipeline Error Alerts with Amazon EventBridge (CloudWatch) (OPTIONAL)"
 date: "2026-05-02"
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
+> **Note:** Using Amazon EventBridge together with CloudWatch is optional. If the system does not require event-driven architecture or complex event routing, CloudWatch can still be used independently for monitoring, logging, and alerting as usual.
 
 ### Objectives
 

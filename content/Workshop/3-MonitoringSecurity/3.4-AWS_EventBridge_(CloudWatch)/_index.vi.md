@@ -1,11 +1,12 @@
 ---
-title: "Thiết lập Báo động Lỗi Data Pipeline với Amazon EventBridge (CloudWatch)"
+title: "Thiết lập Báo động Lỗi Data Pipeline với Amazon EventBridge (CloudWatch) (OPTIONAL)"
 date: "2026-05-02"
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
+> **Lưu ý:** Việc sử dụng Amazon EventBridge kết hợp với CloudWatch là tùy chọn (optional). Nếu hệ thống không yêu cầu cơ chế event-driven hoặc event routing phức tạp, CloudWatch vẫn có thể được sử dụng độc lập để monitoring, logging và thiết lập cảnh báo như thông thường.
 
 ### Mục tiêu
 
