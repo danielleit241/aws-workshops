@@ -5,6 +5,9 @@ weight: 3
 chapter: false
 pre: " <b> 2.3. </b> "
 ---
+
+![Connect to editorv2](/images/Workshop/5.2-Redshift/3-QueryEditorV2/1-Connect/open-editorv2.png)
+
 1. From Redshift console, click "Query data"
 2. Select "Query editor v2"
 

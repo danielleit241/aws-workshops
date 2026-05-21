@@ -10,6 +10,8 @@ pre: " <b> 2.3. </b> "
 
 # Kết nối tới Workgroup
 
+![Connect to editorv2](/images/Workshop/5.2-Redshift/3-QueryEditorV2/1-Connect/open-editorv2.png)
+
 Trong Query Editor v2:
 
 1. Chọn Serverless workgroup: `manhattan-redshift-workgroup`
