@@ -1,34 +1,34 @@
 ---
-title: "Sai lầm phổ biến và cách khắc phục"
+title: "Các lỗi thường gặp và cách khắc phục"
 date: "2026-05-02"
 weight: 6
 chapter: false
 pre: " <b> 2.6. </b> "
 ---
 
-![Đường dẫn sai và đúng với Spectrum](/images/Workshop/5.2-Redshift/6-CommonMistakes/1-PathIssues/spectrum_query_paths.png)
+![Wrong path vs correct Spectrum path](/images/Workshop/5.2-Redshift/6-CommonMistakes/1-PathIssues/spectrum_query_paths.png)
 
-## Sai lầm 1: Sử dụng "Load data" thay vì External Schema
+## Lỗi 1: Dùng "Load data" thay vì External Schema
 
-Khi mới vào Query Editor v2, có thể nhầm click "Load data" để import data vào Redshift native table.
+Khi mới vào Query Editor v2, bạn có thể bấm nhầm **Load data** để nhập dữ liệu vào các native table của Redshift.
 
-![Load data - đường dẫn sai](/images/Workshop/5.2-Redshift/6-CommonMistakes/1-PathIssues/load-data-wrong-path.png)
+![Load data - wrong path](/images/Workshop/5.2-Redshift/6-CommonMistakes/1-PathIssues/load-data-wrong-path.png)
 
-### Tại sao sai?
+### Vì sao sai?
 
-Load data dùng để COPY data từ S3 vào Redshift internal tables, phù hợp khi muốn store data trong Redshift.
+Load data dùng để COPY dữ liệu từ S3 vào các bảng nội bộ của Redshift, phù hợp khi bạn muốn lưu dữ liệu bên trong Redshift.
 
-Nhưng mục tiêu của chúng ta là query external data từ S3/Glue mà không copy.
+Nhưng mục tiêu của chúng ta là truy vấn dữ liệu external từ S3/Glue mà không sao chép.
 
 ### Cách khắc phục
 
-- Cancel Load data
-- Sử dụng CREATE EXTERNAL SCHEMA để reference Glue Catalog
-- Query thông qua external tables
+- Hủy thao tác Load data
+- Dùng `CREATE EXTERNAL SCHEMA` để tham chiếu Glue Catalog
+- Truy vấn thông qua các external table
 
-## Sai lầm 2: Map sai Glue Database
+## Lỗi 2: Ánh xạ sai Glue database
 
-Ban đầu có thể tạo external schema trỏ vào craw_data_catalog (raw data) thay vì processed database.
+Ban đầu, bạn có thể tạo external schema trỏ tới `craw_data_catalog` (dữ liệu raw) thay vì database đã xử lý.
 
 ### Dấu hiệu
 
@@ -36,46 +36,46 @@ Ban đầu có thể tạo external schema trỏ vào craw_data_catalog (raw dat
 SELECT schemaname, tablename FROM svv_external_tables WHERE schemaname = 'taxi_raw';
 ```
 
-![Không có external tables](/images/Workshop/5.2-Redshift/6-CommonMistakes/2-MetadataIssues/no-external-tables.png)
+![No external tables](/images/Workshop/5.2-Redshift/6-CommonMistakes/2-MetadataIssues/no-external-tables.png)
 
-### Khắc phục
+### Cách khắc phục
 
-- Tạo Glue Crawler cho processed S3 bucket
-- Tạo external schema trỏ vào processed database
-- Đảm bảo database name chính xác
+- Tạo Glue Crawler cho bucket S3 chứa dữ liệu processed
+- Tạo external schema trỏ tới processed database
+- Bảo đảm tên database là chính xác
 
-## Sai lầm 3: Duplicate Columns trong Glue Table
+## Lỗi 3: Cột bị trùng trong Glue table
 
-Glue table có year/month xuất hiện cả ở normal columns và partition keys.
+Glue table có `year`/`month` xuất hiện đồng thời trong cột thường và partition key.
 
-### Lỗi
+### Lỗi hiển thị
 
 External table "taxi_processed.processed_yellow_taxi_trip_data" has column "year" duplicated
 
 ### Nguyên nhân
 
-ETL job ghi year/month vào Parquet data, đồng thời S3 path dùng Hive partition year=.../month=...
+ETL job đã ghi `year`/`month` vào dữ liệu Parquet, trong khi đường dẫn S3 cũng dùng Hive partition `year=.../month=...`.
 
-Glue Crawler infer duplicate.
+Glue Crawler vì thế suy luận ra các cột bị trùng.
 
-### Khắc phục
+### Cách khắc phục
 
-Edit Glue table schema: xóa year/month khỏi normal columns, giữ ở partition keys.
+Chỉnh schema của Glue table: xóa `year` và `month` khỏi nhóm cột thường, chỉ giữ trong partition keys.
 
-Sau đó refresh Redshift metadata.
+Sau đó làm mới metadata của Redshift.
 
-## Sai lầm 4: IAM Role không có quyền
+## Lỗi 4: IAM Role thiếu quyền
 
-Nếu query lỗi access denied, kiểm tra IAM role có quyền đọc S3 buckets và Glue catalog.
+Nếu truy vấn thất bại với lỗi `access denied`, hãy kiểm tra xem IAM role đã có quyền đọc bucket S3 và Glue catalog chưa.
 
-Role cần: AmazonS3ReadOnlyAccess, AWSGlueServiceRole policies.
+Role cần có các policy: `AmazonS3ReadOnlyAccess`, `AWSGlueServiceRole`.
 
-## Sai lầm 5: Wrong Region
+## Lỗi 5: Sai Region
 
-Đảm bảo tất cả resources ở cùng region us-east-2.
+Bảo đảm tất cả tài nguyên đều nằm trong cùng region `us-east-2`.
 
-## Best Practices
+## Best practices
 
-- Luôn test với LIMIT trước khi query toàn bộ
-- Sử dụng partition filters để tối ưu performance
-- Kiểm tra svv_external_schemas và svv_external_tables để verify metadata
+- Luôn thử với `LIMIT` trước khi chạy truy vấn toàn phần
+- Dùng partition filter để tối ưu hiệu năng
+- Kiểm tra `svv_external_schemas` và `svv_external_tables` để xác minh metadata

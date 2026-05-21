@@ -1,73 +1,74 @@
 ---
-title: "Khái niệm cốt lõi của Redshift Serverless"
+title: "Các khái niệm cốt lõi của Redshift Serverless"
 date: "2026-05-02"
 weight: 1
 chapter: false
 pre: " <b> 2.1. </b> "
 ---
-
 ## Namespace là gì?
 
-Namespace chứa tất cả các thành phần thuộc về database:
+Một namespace chứa toàn bộ các thành phần liên quan đến cơ sở dữ liệu:
 
-- Database objects (schemas, tables, views)
-- Users và permissions
-- IAM roles
-- Data warehouse metadata
-- Encryption settings
+- Đối tượng cơ sở dữ liệu (schema, table, view)
+- Người dùng và quyền truy cập
+- IAM role
+- Metadata của data warehouse
+- Thiết lập mã hóa
 
-Trong trường hợp này, namespace "manhattan-redshift-namespace" chứa database "dev".
+Trong trường hợp của chúng ta, `manhattan-redshift-namespace` chứa cơ sở dữ liệu `dev`.
 
 ## Workgroup là gì?
 
-Workgroup là phần compute để chạy queries:
+Một workgroup là phần compute dùng để chạy truy vấn:
 
 - Base capacity (RPU - Redshift Processing Units)
-- Endpoint để connect
+- Endpoint để kết nối
 - VPC/subnet/security group
-- Query monitoring
-- Cost/performance controls
+- Giám sát truy vấn
+- Kiểm soát chi phí/hiệu năng
 
-Workgroup "manhattan-redshift-workgroup" có base capacity 4 RPU và endpoint để Query Editor v2 connect.
+`manhattan-redshift-workgroup` có 4 base RPU và một endpoint để kết nối từ Query Editor v2.
 
-## Sự khác biệt
+## Sự khác nhau
 
-- **Namespace**: Phần "storage/metadata" của database
-- **Workgroup**: Phần "compute/query engine"
+- **Namespace**: Phần “lưu trữ/metadata” của cơ sở dữ liệu
+- **Workgroup**: Phần “compute/query engine”
 
-Chúng ta tách biệt để quản lý storage và compute độc lập.
+Hai phần này được tách riêng để có thể quản lý lưu trữ và compute một cách độc lập.
+
+![Redshift Serverless Architecture](/images/Workshop/5.2-Redshift/1-Overview/1-Architecture/redshift_serverless_architecture.png)
 
 # Capacity và RPU
 
 ## RPU là gì?
 
-RPU (Redshift Processing Unit) là đơn vị đo lường sức mạnh compute của Redshift Serverless. Bao gồm CPU, memory, network và processing power cho queries.
+RPU (Redshift Processing Unit) đo năng lực compute của Redshift Serverless, bao gồm CPU, bộ nhớ, mạng, và khả năng xử lý truy vấn.
 
-## Mức capacity
+## Các mức capacity
 
-- 4 RPU: Thấp nhất, phù hợp test/query nhẹ
-- 8 RPU: Trung bình, thoải mái hơn
-- 16-32 RPU: Query nhiều dữ liệu
+- 4 RPU: Mức tối thiểu, phù hợp cho kiểm thử/truy vấn nhẹ
+- 8 RPU: Mức trung bình, thoải mái hơn
+- 16-32 RPU: Dành cho truy vấn dữ liệu lớn hơn
 - 128 RPU: Mặc định, mạnh nhưng tốn kém
 
-Chúng ta chọn 4 RPU vì chỉ query thử nghiệm trên dữ liệu taxi ~ vài trăm MB.
+Chúng ta chọn 4 RPU vì chỉ kiểm thử truy vấn trên dữ liệu taxi (~vài trăm MB).
 
 ## Chi phí
 
-Redshift Serverless tính phí theo RPU-hours sử dụng. Capacity càng cao thì chi phí càng tăng nếu query nặng. Với hand-on, 4 RPU giúp tiết kiệm.
+Redshift Serverless tính phí dựa trên số RPU-giờ sử dụng. Capacity càng cao thì chi phí cho các truy vấn nặng càng lớn. Với phần thực hành, 4 RPU giúp tiết kiệm chi phí.
 
 # IAM Role
 
-Redshift cần IAM role để:
+Redshift cần một IAM role để:
 
-- Đọc dữ liệu từ S3 buckets (yellow-taxi-trip-demo-fcaj, processed-yellow-taxi-trip-data)
+- Đọc dữ liệu từ các bucket S3 (`yellow-taxi-trip-demo-fcaj`, `processed-yellow-taxi-trip-data`)
 - Truy cập Glue Data Catalog
-- Thực hiện các operations như COPY, UNLOAD
+- Thực hiện các thao tác như COPY, UNLOAD
 
-Role được tạo với quyền AmazonS3ReadOnlyAccess và AWSGlueServiceRole để đọc S3 và Glue.
+Role này được tạo với quyền `AmazonS3ReadOnlyAccess` và `AWSGlueServiceRole` để đọc S3 và Glue.
 
 # Free Trial
 
-Redshift Serverless có $300 credit free trial trong 90 ngày cho tài khoản mới. Đây là credit riêng biệt với AWS Free Tier $200.
+Redshift Serverless có khoản credit dùng thử miễn phí trị giá $300 trong 90 ngày cho tài khoản mới. Khoản này tách biệt với AWS Free Tier $200.
 
-Chúng ta sử dụng credit này để tránh chi phí phát sinh trong quá trình học tập.
+Chúng ta dùng credit này để tránh phát sinh chi phí trong quá trình học.

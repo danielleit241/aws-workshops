@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 2.7. </b> "
 ---
 
-Redshift Serverless có $300 credit free trial trong 90 ngày cho tài khoản chưa từng dùng Redshift Serverless.
+Redshift Serverless có khoản credit dùng thử miễn phí $300 trong 90 ngày dành cho các tài khoản chưa từng sử dụng Redshift Serverless trước đó.
 
-- Credit này riêng biệt với AWS Free Tier $200
-- Áp dụng cho compute usage (RPU-hours)
-- Tự động hết sau 90 ngày hoặc khi dùng hết $300
+- Khoản credit này tách biệt với AWS Free Tier $200
+- Áp dụng cho mức sử dụng compute (RPU-hours)
+- Tự động hết hạn sau 90 ngày hoặc khi dùng hết $300
 ![Redshift Serverless free trial](/images/Workshop/5.2-Redshift/3-QueryEditorV2/1-Connect/query-editor-v2-connected.png)
 ![Redshift Serverless free trial](/images/Workshop/5.2-Redshift/7-CostControl/1-FreeTrial/redshift-freetrial.png)
 
@@ -18,38 +18,38 @@ Redshift Serverless có $300 credit free trial trong 90 ngày cho tài khoản c
 
 ## Capacity
 
-- Sử dụng base capacity thấp (4 RPU) cho hand-on
-- Tăng lên khi cần query nặng, nhưng giảm ngay sau
-- Monitor usage trong Redshift console
+- Dùng base capacity thấp (4 RPU) cho phần thực hành
+- Chỉ tăng khi cần chạy truy vấn nặng, sau đó giảm lại ngay
+- Theo dõi mức sử dụng trong Redshift console
 
-## Query Optimization
+## Tối ưu truy vấn
 
-- Sử dụng LIMIT trong queries test
-- Filter theo partition (year, month) để giảm scan data
-- Tránh query toàn bộ dataset không cần thiết
+- Dùng `LIMIT` trong các truy vấn kiểm thử
+- Lọc theo partition (`year`, `month`) để giảm lượng dữ liệu phải scan
+- Tránh các truy vấn toàn bộ dataset khi không cần thiết
 
-# Dọn dẹp Resources
+# Dọn dẹp tài nguyên
 
 Sau khi hoàn thành workshop:
 
-1. **Delete Redshift workgroup và namespace**:
+1. **Xóa Redshift workgroup và namespace**:
    - Redshift console → Serverless dashboard
    - Chọn workgroup → Delete
    - Chọn namespace → Delete
 
-2. **Delete Glue resources** (nếu không cần):
-   - Crawlers: glue-crawler-processed-yellow-taxi
-   - Databases: redshift_database
-   - Tables: processed_yellow_taxi_trip_data
+2. **Xóa các tài nguyên Glue** (nếu không còn cần):
+   - Crawlers: `glue-crawler-processed-yellow-taxi`
+   - Databases: `redshift_database`
+   - Tables: `processed_yellow_taxi_trip_data`
 
-3. **Delete IAM roles**:
-   - AmazonRedshift-CommandsAccessRole-...
-   - glue-role-manhattan-processed-crawler
+3. **Xóa các IAM role**:
+   - `AmazonRedshift-CommandsAccessRole-...`
+   - `glue-role-manhattan-processed-crawler`
 
-4. **Empty S3 buckets** nếu không cần data (nhưng giữ lại cho ETL pipeline)
+4. **Làm trống các bucket S3** nếu không còn cần dữ liệu (nhưng giữ lại nếu vẫn dùng cho ETL pipeline)
 
 # Lưu ý
 
-- Redshift Serverless chỉ tính phí khi query chạy
-- Nếu workgroup tồn tại mà không dùng, vẫn có thể phát sinh phí nhỏ
-- Theo dõi Billing console để track usage
+- Redshift Serverless chỉ tính phí khi truy vấn đang chạy
+- Nếu workgroup vẫn tồn tại dù không sử dụng, vẫn có thể phát sinh một khoản phí nhỏ
+- Theo dõi Billing console để kiểm soát mức sử dụng

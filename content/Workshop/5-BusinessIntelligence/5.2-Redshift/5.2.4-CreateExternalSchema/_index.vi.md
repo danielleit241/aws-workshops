@@ -6,36 +6,36 @@ chapter: false
 pre: " <b> 2.4. </b> "
 ---
 
-Để truy vấn dữ liệu từ Glue Data Catalog thông qua Redshift Spectrum, chúng ta cần tạo external schema.
+Để truy vấn dữ liệu từ Glue Data Catalog thông qua Redshift Spectrum, chúng ta cần tạo một external schema.
 
-## Schema cho Processed Data
+## Schema cho dữ liệu đã xử lý
 
-Vì mục tiêu là query processed data, chúng ta tạo schema trỏ vào processed database.
+Vì mục tiêu của chúng ta là truy vấn dữ liệu đã được xử lý, ta sẽ tạo một schema trỏ tới database chứa dữ liệu processed.
 
-![Schema cho processed data](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/schema-processed-data.png)
+![Schema for processed data](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/schema-processed-data.png)
 
-Trước tiên, cần tạo Glue Crawler cho processed S3 bucket.
+Trước tiên, chúng ta cần tạo một Glue Crawler cho bucket S3 đã xử lý.
 
 ### Tạo IAM Role cho Crawler
 
 1. Vào IAM console
 2. Tạo role với trusted entity: Glue
-3. Attach policies: AWSGlueServiceRole, AmazonS3ReadOnlyAccess
-4. Tên role: glue-role-manhattan-processed-crawler
+3. Gắn các policy: `AWSGlueServiceRole`, `AmazonS3ReadOnlyAccess`
+4. Tên role: `glue-role-manhattan-processed-crawler`
 
-![Tạo IAM role](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/create-iam-role.png)
+![Create IAM role](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/create-iam-role.png)
 
 ### Tạo Glue Crawler
 
 1. Vào Glue console → Crawlers
-2. Create crawler:
-   - Name: glue-crawler-processed-yellow-taxi
-   - Data source: S3, path s3://processed-yellow-taxi-trip-data/
-   - IAM role: glue-role-manhattan-processed-crawler
-   - Target database: redshift_database (tạo mới)
-3. Run crawler
+2. Tạo crawler:
+   - Name: `glue-crawler-processed-yellow-taxi`
+   - Data source: S3, đường dẫn `s3://processed-yellow-taxi-trip-data/`
+   - IAM role: `glue-role-manhattan-processed-crawler`
+   - Target database: `redshift_database` (tạo mới)
+3. Chạy crawler
 
-![Tạo Glue crawler](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/create-glue-crawler.png)
+![Create Glue crawler](/images/Workshop/5.2-Redshift/4-ExternalSchema/1-Prerequisites/create-glue-crawler.png)
 
 ![Crawler succeeded](/images/Workshop/5.2-Redshift/4-ExternalSchema/3-Troubleshooting/crawler-succeeded.png)
 
@@ -49,9 +49,11 @@ IAM_ROLE 'arn:aws:iam::878796852481:role/service-role/AmazonRedshift-CommandsAcc
 REGION 'us-east-2';
 ```
 
-![Tạo external schema](/images/Workshop/5.2-Redshift/4-ExternalSchema/2-SchemaCreation/create-external-schema.png)
+![Create external schema](/images/Workshop/5.2-Redshift/4-ExternalSchema/2-SchemaCreation/create-external-schema.png)
 
-Kiểm tra tables:
+![External Schema Creation Flow](/images/Workshop/5.2-Redshift/4-ExternalSchema/2-SchemaCreation/external_schema_flow.png)
+
+Kiểm tra các bảng:
 
 ```sql
 SELECT schemaname, tablename
@@ -59,16 +61,16 @@ FROM svv_external_tables
 WHERE schemaname = 'taxi_processed';
 ```
 
-![Kiểm tra tables](/images/Workshop/5.2-Redshift/4-ExternalSchema/2-SchemaCreation/check-tables.png)
+![Check tables](/images/Workshop/5.2-Redshift/4-ExternalSchema/2-SchemaCreation/check-tables.png)
 
-## Sửa lỗi Duplicate Columns
+## Sửa lỗi cột bị trùng lặp
 
-Nếu gặp lỗi "column year duplicated", cần sửa Glue table schema.
+Nếu bạn gặp lỗi `column year duplicated`, hãy chỉnh lại schema của Glue table.
 
-Vào Glue console → Tables → processed_yellow_taxi_trip_data → Edit schema
+Vào Glue console → Tables → `processed_yellow_taxi_trip_data` → Edit schema
 
-Xóa year và month khỏi normal columns, giữ ở Partition keys.
+Xóa `year` và `month` khỏi nhóm cột thông thường, chỉ giữ chúng trong **Partition keys**.
 
-![Sửa duplicate columns](/images/Workshop/5.2-Redshift/4-ExternalSchema/3-Troubleshooting/glue-schema-edit-duplicate.png)
+![Fix duplicate columns](/images/Workshop/5.2-Redshift/4-ExternalSchema/3-Troubleshooting/glue-schema-edit-duplicate.png)
 
-Sau đó refresh Redshift metadata và query lại.
+Sau đó làm mới metadata của Redshift và truy vấn lại.
