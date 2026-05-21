@@ -58,7 +58,7 @@ Sign up for QuickSight
 
 At this stage, the system will display the initial QuickSight account creation interface.
 
-![Register QuickSight](/images/Workshop/5.3 Quicksight/5.3.1.jpg)
+![Register QuickSight](/images/Workshop/5.3%20Quicksight/5.3.1.jpg)
 
 ---
 
