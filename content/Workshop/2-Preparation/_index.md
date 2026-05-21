@@ -38,7 +38,7 @@ In this workshop, we will use the following sample configuration.
 | Resource        | Value                             |
 | --------------- | --------------------------------- |
 | S3 Bucket Name  | `yellow-taxi-trip-demo-fcaj`      |
-| AWS Region      | `ap-southeast-1` (Singapore)      |
+| AWS Region      | `us-east-1` (Ohio)      |
 | Dataset Format  | Parquet                           |
 | Folder Path     | `/` (bucket root)                 |
 
@@ -50,7 +50,7 @@ You can adjust the bucket name and region based on your own AWS environment.
 
 1. Open your browser and go to [https://console.aws.amazon.com](https://console.aws.amazon.com)
 2. Sign in with your AWS account credentials
-3. In the top-right corner, confirm that you are in the correct **AWS Region** (e.g., `ap-southeast-1`)
+3. In the top-right corner, confirm that you are in the correct **AWS Region** (e.g., `us-east-2`)
 
 {{% notice tip %}}
 You can change the region by clicking the region name in the top-right corner of the console and selecting the desired region from the dropdown.
@@ -68,7 +68,7 @@ You can change the region by clicking the region name in the top-right corner of
 S3 bucket names must be globally unique across all AWS accounts. If the name is already taken, try adding a suffix such as your initials or a random number.
 {{% /notice %}}
 
-4. Under **AWS Region**, select the region you are using for this workshop (e.g., `ap-southeast-1`)
+4. Under **AWS Region**, select the region you are using for this workshop (e.g., `us-east-2`)
 5. Leave all other settings as default
 6. Scroll down and click **Create bucket**
 

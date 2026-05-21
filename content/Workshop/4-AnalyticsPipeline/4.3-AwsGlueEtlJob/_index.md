@@ -18,20 +18,6 @@ After completing this section, you will be able to:
 - Configure the output target in Amazon S3
 - Run the ETL Job and verify the output
 
-### Architecture Overview
-
-![overview](/images/Proposal/diagram-architecture.jpg)
-
-In the previous sections, we used **AWS Glue Crawler** to scan raw Parquet files stored in Amazon S3 and registered the schema into the **AWS Glue Data Catalog**.
-
-In this section, the **AWS Glue ETL Job** reads that catalog metadata to locate and understand the raw data, applies transformations, and writes the cleaned output back to a target S3 location.
-
-The simplified workflow is:
-
-![workflow](/images/Workshop/4.Glue/4.2.ETL/4.2.1.png)
-
-> Important: The ETL Job reads data from Amazon S3 using the schema defined in the Data Catalog.  
-> The Data Catalog itself does not store the data. It only provides the metadata that tells the job where the data is and how it is structured.
 
 ### Key Concepts
 

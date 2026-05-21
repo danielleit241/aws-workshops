@@ -18,20 +18,7 @@ Sau khi hoàn thành phần này, bạn sẽ có thể:
 - Cấu hình đích đầu ra trong Amazon S3
 - Chạy ETL Job và xác minh kết quả đầu ra
 
-### Tổng quan kiến trúc
 
-![overview](/images/Proposal/diagram-architecture.jpg)
-
-Ở các phần trước, chúng ta đã dùng **AWS Glue Crawler** để quét các tệp Parquet thô lưu trong Amazon S3 và đăng ký schema vào **AWS Glue Data Catalog**.
-
-Trong phần này, **AWS Glue ETL Job** sẽ đọc metadata từ catalog đó để xác định vị trí và cấu trúc dữ liệu thô, áp dụng các phép biến đổi, rồi ghi kết quả đã làm sạch vào một vị trí S3 đích.
-
-Luồng xử lý rút gọn như sau:
-
-![workflow](/images/Workshop/4.Glue/4.2.ETL/4.2.1.png)
-
-> Lưu ý quan trọng: ETL Job đọc dữ liệu từ Amazon S3 bằng cách sử dụng schema được định nghĩa trong Data Catalog.  
-> Bản thân Data Catalog không lưu dữ liệu. Nó chỉ cung cấp metadata cho job biết dữ liệu nằm ở đâu và có cấu trúc như thế nào.
 
 ### Các khái niệm chính
 

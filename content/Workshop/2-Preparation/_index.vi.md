@@ -39,7 +39,7 @@ Trong workshop này, chúng ta sẽ dùng cấu hình mẫu sau.
 | Tài nguyên      | Giá trị                           |
 | --------------- | --------------------------------- |
 | S3 Bucket Name  | `yellow-taxi-trip-demo-fcaj`      |
-| AWS Region      | `ap-southeast-1` (Singapore)      |
+| AWS Region      | `us-east-1` (Ohio)      |
 | Dataset Format  | Parquet                           |
 | Folder Path     | `/` (bucket root)                 |
 
@@ -51,7 +51,7 @@ Bạn có thể điều chỉnh tên bucket và region theo môi trường AWS c
 
 1. Mở trình duyệt và truy cập [https://console.aws.amazon.com](https://console.aws.amazon.com)
 2. Đăng nhập bằng thông tin tài khoản AWS của bạn
-3. Ở góc trên bên phải, xác nhận rằng bạn đang ở đúng **AWS Region** (ví dụ: `ap-southeast-1`)
+3. Ở góc trên bên phải, xác nhận rằng bạn đang ở đúng **AWS Region** (ví dụ: `us-east-2`)
 
 {{% notice tip %}}
 Bạn có thể thay đổi region bằng cách nhấn vào tên region ở góc trên bên phải của console và chọn region mong muốn từ danh sách thả xuống.
@@ -69,7 +69,7 @@ Bạn có thể thay đổi region bằng cách nhấn vào tên region ở góc
 Tên S3 bucket phải là duy nhất trên toàn bộ tài khoản AWS. Nếu tên đã được sử dụng, hãy thử thêm hậu tố như chữ viết tắt tên bạn hoặc một số ngẫu nhiên.
 {{% /notice %}}
 
-4. Trong phần **AWS Region**, chọn region bạn đang dùng cho workshop này (ví dụ: `ap-southeast-1`)
+4. Trong phần **AWS Region**, chọn region bạn đang dùng cho workshop này (ví dụ: `us-east-2`)
 5. Giữ nguyên tất cả các cài đặt còn lại theo mặc định
 6. Cuộn xuống và nhấn **Create bucket**
 
