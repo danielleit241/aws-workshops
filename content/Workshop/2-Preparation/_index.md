@@ -17,14 +17,6 @@ After completing this section, you will be able to:
 - Verify the uploaded files in the S3 console
 - Confirm that your AWS account has the necessary permissions to proceed
 
-### Architecture Overview
-
-![Architecture](/images/Proposal/diagram-architecture.jpg)
-
-The preparation step is the foundation of the entire workshop. Before any analytics pipeline can run, the raw data must be available in **Amazon S3**. All downstream services — including **AWS Glue Crawler**, **AWS Glue ETL Job**, **Amazon Athena**, and **Amazon Redshift** — depend on this data being stored and accessible in S3.
-
-> Important: Make sure you are working in the correct AWS Region throughout this workshop.  
-> All resources (S3 bucket, Glue, Athena, Redshift) should be created in the same region to avoid cross-region access issues.
 
 ### Prerequisites
 

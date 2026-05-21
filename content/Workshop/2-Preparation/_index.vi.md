@@ -17,14 +17,7 @@ Sau khi hoàn thành phần này, bạn sẽ có thể:
 - Xác minh các tệp đã tải lên trong S3 console
 - Xác nhận rằng tài khoản AWS của bạn có đủ quyền để tiếp tục
 
-### Tổng quan kiến trúc
 
-![Architecture](/images/Proposal/diagram-architecture.jpg)
-
-Bước chuẩn bị là nền tảng của toàn bộ workshop. Trước khi bất kỳ pipeline phân tích nào có thể chạy, dữ liệu thô phải được lưu sẵn trong **Amazon S3**. Tất cả các dịch vụ phía sau — bao gồm **AWS Glue Crawler**, **AWS Glue ETL Job**, **Amazon Athena** và **Amazon Redshift** — đều phụ thuộc vào dữ liệu này được lưu trữ và có thể truy cập trên S3.
-
-> Lưu ý quan trọng: Hãy đảm bảo bạn đang làm việc trong đúng AWS Region trong suốt workshop này.  
-> Tất cả các tài nguyên (S3 bucket, Glue, Athena, Redshift) nên được tạo trong cùng một region để tránh các vấn đề truy cập xuyên region.
 
 ### Điều kiện tiên quyết
 
