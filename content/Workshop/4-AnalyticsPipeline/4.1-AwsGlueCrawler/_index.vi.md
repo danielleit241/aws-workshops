@@ -19,11 +19,7 @@ Sau khi hoàn thành phần này, bạn sẽ có thể:
 - Tạo và chạy Glue Crawler
 - Xác minh bảng được tạo trong Glue Data Catalog
 
-### Tổng quan kiến trúc
-
-![overview](/images/Proposal/diagram-architecture.jpg)
-
-Kiến trúc của bài lab này được thiết kế để minh họa một mô hình khám phá dữ liệu phổ biến trên AWS.
+### Tổng quan luồng xử lý
 
 Dữ liệu thô được lưu trong **Amazon S3** ở định dạng Parquet. **AWS Glue Crawler** quét nguồn dữ liệu, xác định cấu trúc tệp, phát hiện schema và tạo các bảng metadata trong **AWS Glue Data Catalog**. Sau khi metadata sẵn sàng, **AWS Glue ETL Job** có thể dùng thông tin trong catalog để đọc, chuyển đổi và ghi dữ liệu đã xử lý trở lại Amazon S3.
 

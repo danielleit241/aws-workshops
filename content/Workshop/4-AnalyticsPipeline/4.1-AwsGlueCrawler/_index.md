@@ -19,11 +19,7 @@ After completing this session, you will be able to:
 - Create and run a Glue Crawler
 - Verify the generated table in the Glue Data Catalog
 
-### Architecture Overview
-
-![overview](/images/Proposal/diagram-architecture.jpg)
-
-The architecture of this lab is designed to demonstrate a common data discovery pattern on AWS.
+### Workflow Overview
 
 Raw data is stored in **Amazon S3** in Parquet format. **AWS Glue Crawler** scans the data source, identifies the file structure, detects the schema, and creates metadata tables inside the **AWS Glue Data Catalog**. After the metadata is available, an **AWS Glue ETL Job** can use that catalog information to read, transform, and write processed data back to Amazon S3.
 
